@@ -1,4 +1,5 @@
 import express from 'express';
+import bodyParser from 'body-parser';
 
 const PORT = 8000;
 
@@ -6,6 +7,8 @@ const app = express();
 
 // Loads in local CSS and JS.
 app.use(express.static('public'));
+// Express middleware for parsing the body of POST requests.
+app.use(bodyParser.urlencoded({ extended: true }));
 
 let comments = [
     {
@@ -27,7 +30,7 @@ let comments = [
             'update....the in-platform analytics look expecially delicious. :)',
         children: [
             {
-                id: 3,
+                id: 2.1,
                 user: 'James',
                 timestamp: '2 hrs ago',
                 comment: 'Thanks Sophie! Last year has been an absolut goldrush for ' +
@@ -47,6 +50,14 @@ let comments = [
     }
 ];
 
+let commentTemplate = {
+    id: null,
+    user: '',
+    timestamp: '',
+    comment: '',
+    children: []
+};
+
 // Endpoints
 app.get('/', (req, res) => {
     res.sendFile('./index.html');
@@ -62,7 +73,16 @@ app.get('/backend/comments', (req, res) => {
     res.json(comments);
 });
 
+app.post('/backend/addcomment', (req, res) => {
+    // Deep copy the template.
+    let newComment = {...commentTemplate};
+    newComment.comment = req.body.comment;
+    comments.push(newComment);
+
+    res.redirect('/');
+});
+
 // Run Server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+    console.log(`Server running on http://localhost:${PORT}/`);
 });
