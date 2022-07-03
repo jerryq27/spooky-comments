@@ -88,6 +88,19 @@ app.post('/backend/addcomment', (req, res) => {
     res.redirect('/');
 });
 
+app.put('/backend/update/:id', (req, res) => {
+    const id = req.params.id;
+    const comment = comments[id];
+
+    if(comment) {
+        console.log('updating ' + id)
+        comment.upvotes += 1;
+        res.statusCode = 200;
+    }
+    console.log(JSON.stringify(comment));
+    res.send(JSON.stringify(comment));
+});
+
 // Run Server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}/`);

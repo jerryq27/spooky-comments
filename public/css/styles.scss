@@ -46,4 +46,10 @@ $primary: #7E34f6;
 .link-btn {
     @extend .btn;
     @extend .btn-link;
+    text-decoration: none;
+    color: black;
+}
+
+.link-btn:hover {
+    color: darkgray;
 }

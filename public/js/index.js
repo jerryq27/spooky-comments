@@ -14,7 +14,7 @@ getComments = () => {
 
     // Make GET request.
     let xmlReq = new XMLHttpRequest();
-    xmlReq.open("GET", `${url}/comments`, false);
+    xmlReq.open('GET', `${url}/comments`, false);
     xmlReq.send(null);
     let json = JSON.parse(xmlReq.responseText);
 
@@ -54,6 +54,15 @@ createCommentComponent = (comment) => {
     
     const upvoteCtrl = document.createElement('button');
     upvoteCtrl.setAttribute('class', 'link-btn');
+    upvoteCtrl.onclick = () => {
+        // Make PUT request.
+        // comment.upvotes += 1;
+
+        const xmlReq = new XMLHttpRequest();
+        xmlReq.open('PUT', `${url}/update/${comment.id}`, false);
+        xmlReq.setRequestHeader('Content-type', 'application/json')
+        xmlReq.send(null);
+    }
     
     const replyCtrl = document.createElement('button');
     replyCtrl.setAttribute('class', 'link-btn');
@@ -64,7 +73,7 @@ createCommentComponent = (comment) => {
     spacerSpan.innerText = ' • ';
     timestampSpan.innerText = comment.timestamp;
     commentText.innerText = comment.comment;
-    upvoteCtrl.innerText = '^ Upvote';
+    upvoteCtrl.innerText = comment.upvotes > 0? `▲ Upvote (${comment.upvotes})` : '▲ Upvote';
     replyCtrl.innerText = 'Reply';
 
     container.appendChild(userSpan);

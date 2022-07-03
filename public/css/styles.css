@@ -8399,3 +8399,10 @@ textarea.form-control-lg {
 .profile-img {
   max-width: 35px;
   max-height: 35px; }
+
+.link-btn {
+  text-decoration: none;
+  color: black; }
+
+.link-btn:hover {
+  color: darkgray; }
