@@ -482,7 +482,7 @@ progress {
   .blockquote-footer::before {
     content: "\2014\00A0"; }
 
-.img-fluid {
+.img-fluid, .profile-img {
   max-width: 100%;
   height: auto; }
 
@@ -871,10 +871,10 @@ progress {
   .col-md-auto {
     flex: 0 0 auto;
     width: auto; }
-  .col-md-1 {
+  .col-md-1, .profile-column {
     flex: 0 0 auto;
     width: 8.33333%; }
-  .col-md-2 {
+  .col-md-2, .comment-btn-column {
     flex: 0 0 auto;
     width: 16.66667%; }
   .col-md-3 {
@@ -895,7 +895,7 @@ progress {
   .col-md-8 {
     flex: 0 0 auto;
     width: 66.66667%; }
-  .col-md-9 {
+  .col-md-9, .comment-column {
     flex: 0 0 auto;
     width: 75%; }
   .col-md-10 {
@@ -1560,7 +1560,7 @@ progress {
   font-size: 0.875em;
   color: rgba(var(--bs-body-color-rgb), 0.75); }
 
-.form-control {
+.form-control, .comment-input {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
@@ -1575,27 +1575,27 @@ progress {
   border-radius: 0.375rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
   @media (prefers-reduced-motion: reduce) {
-    .form-control {
+    .form-control, .comment-input {
       transition: none; } }
-  .form-control[type="file"] {
+  .form-control[type="file"], .comment-input[type="file"] {
     overflow: hidden; }
-    .form-control[type="file"]:not(:disabled):not([readonly]) {
+    .form-control[type="file"]:not(:disabled):not([readonly]), .comment-input[type="file"]:not(:disabled):not([readonly]) {
       cursor: pointer; }
-  .form-control:focus {
+  .form-control:focus, .comment-input:focus {
     color: #212529;
     background-color: #fff;
     border-color: #86b7fe;
     outline: 0;
     box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25); }
-  .form-control::-webkit-date-and-time-value {
+  .form-control::-webkit-date-and-time-value, .comment-input::-webkit-date-and-time-value {
     height: 1.5em; }
-  .form-control::placeholder {
+  .form-control::placeholder, .comment-input::placeholder {
     color: #6c757d;
     opacity: 1; }
-  .form-control:disabled, .form-control[readonly] {
+  .form-control:disabled, .comment-input:disabled, .form-control[readonly], .comment-input[readonly] {
     background-color: #e9ecef;
     opacity: 1; }
-  .form-control::file-selector-button {
+  .form-control::file-selector-button, .comment-input::file-selector-button {
     padding: 0.375rem 0.75rem;
     margin: -0.375rem -0.75rem;
     margin-inline-end: 0.75rem;
@@ -1609,9 +1609,9 @@ progress {
     border-radius: 0;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
     @media (prefers-reduced-motion: reduce) {
-      .form-control::file-selector-button {
+      .form-control::file-selector-button, .comment-input::file-selector-button {
         transition: none; } }
-  .form-control:hover:not(:disabled):not([readonly])::file-selector-button {
+  .form-control:hover:not(:disabled):not([readonly])::file-selector-button, .comment-input:hover:not(:disabled):not([readonly])::file-selector-button {
     background-color: #dde0e3; }
 
 .form-control-plaintext {
@@ -1648,7 +1648,7 @@ progress {
     margin: -0.5rem -1rem;
     margin-inline-end: 1rem; }
 
-textarea.form-control {
+textarea.form-control, textarea.comment-input {
   min-height: calc(1.5em + 0.75rem + 2px); }
 
 textarea.form-control-sm {
@@ -1880,7 +1880,7 @@ textarea.form-control-lg {
 
 .form-floating {
   position: relative; }
-  .form-floating > .form-control,
+  .form-floating > .form-control, .form-floating > .comment-input,
   .form-floating > .form-control-plaintext,
   .form-floating > .form-select {
     height: calc(3.5rem + 2px);
@@ -1898,31 +1898,32 @@ textarea.form-control-lg {
     @media (prefers-reduced-motion: reduce) {
       .form-floating > label {
         transition: none; } }
-  .form-floating > .form-control,
+  .form-floating > .form-control, .form-floating > .comment-input,
   .form-floating > .form-control-plaintext {
     padding: 1rem 0.75rem; }
-    .form-floating > .form-control::placeholder,
+    .form-floating > .form-control::placeholder, .form-floating > .comment-input::placeholder,
     .form-floating > .form-control-plaintext::placeholder {
       color: transparent; }
-    .form-floating > .form-control:focus, .form-floating > .form-control:not(:placeholder-shown),
+    .form-floating > .form-control:focus, .form-floating > .comment-input:focus, .form-floating > .form-control:not(:placeholder-shown), .form-floating > .comment-input:not(:placeholder-shown),
     .form-floating > .form-control-plaintext:focus,
     .form-floating > .form-control-plaintext:not(:placeholder-shown) {
       padding-top: 1.625rem;
       padding-bottom: 0.625rem; }
-    .form-floating > .form-control:-webkit-autofill,
+    .form-floating > .form-control:-webkit-autofill, .form-floating > .comment-input:-webkit-autofill,
     .form-floating > .form-control-plaintext:-webkit-autofill {
       padding-top: 1.625rem;
       padding-bottom: 0.625rem; }
   .form-floating > .form-select {
     padding-top: 1.625rem;
     padding-bottom: 0.625rem; }
-  .form-floating > .form-control:focus ~ label,
+  .form-floating > .form-control:focus ~ label, .form-floating > .comment-input:focus ~ label,
   .form-floating > .form-control:not(:placeholder-shown) ~ label,
+  .form-floating > .comment-input:not(:placeholder-shown) ~ label,
   .form-floating > .form-control-plaintext ~ label,
   .form-floating > .form-select ~ label {
     opacity: 0.65;
     transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem); }
-  .form-floating > .form-control:-webkit-autofill ~ label {
+  .form-floating > .form-control:-webkit-autofill ~ label, .form-floating > .comment-input:-webkit-autofill ~ label {
     opacity: 0.65;
     transform: scale(0.85) translateY(-0.5rem) translateX(0.15rem); }
   .form-floating > .form-control-plaintext ~ label {
@@ -1934,13 +1935,13 @@ textarea.form-control-lg {
   flex-wrap: wrap;
   align-items: stretch;
   width: 100%; }
-  .input-group > .form-control,
+  .input-group > .form-control, .input-group > .comment-input,
   .input-group > .form-select {
     position: relative;
     flex: 1 1 auto;
     width: 1%;
     min-width: 0; }
-  .input-group > .form-control:focus,
+  .input-group > .form-control:focus, .input-group > .comment-input:focus,
   .input-group > .form-select:focus {
     z-index: 3; }
   .input-group .btn {
@@ -1963,7 +1964,7 @@ textarea.form-control-lg {
   border: 1px solid #ced4da;
   border-radius: 0.375rem; }
 
-.input-group-lg > .form-control,
+.input-group-lg > .form-control, .input-group-lg > .comment-input,
 .input-group-lg > .form-select,
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn {
@@ -1971,7 +1972,7 @@ textarea.form-control-lg {
   font-size: 1.25rem;
   border-radius: 0.5rem; }
 
-.input-group-sm > .form-control,
+.input-group-sm > .form-control, .input-group-sm > .comment-input,
 .input-group-sm > .form-select,
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn {
@@ -2024,18 +2025,18 @@ textarea.form-control-lg {
 .is-valid ~ .valid-tooltip {
   display: block; }
 
-.was-validated .form-control:valid, .form-control.is-valid {
+.was-validated .form-control:valid, .was-validated .comment-input:valid, .form-control.is-valid, .is-valid.comment-input {
   border-color: #198754;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%23198754' d='M2.3 6.73.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem); }
-  .was-validated .form-control:valid:focus, .form-control.is-valid:focus {
+  .was-validated .form-control:valid:focus, .was-validated .comment-input:valid:focus, .form-control.is-valid:focus, .is-valid.comment-input:focus {
     border-color: #198754;
     box-shadow: 0 0 0 0.25rem rgba(25, 135, 84, 0.25); }
 
-.was-validated textarea.form-control:valid, textarea.form-control.is-valid {
+.was-validated textarea.form-control:valid, .was-validated textarea.comment-input:valid, textarea.form-control.is-valid, textarea.is-valid.comment-input {
   padding-right: calc(1.5em + 0.75rem);
   background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem); }
 
@@ -2065,11 +2066,11 @@ textarea.form-control-lg {
 .form-check-inline .form-check-input ~ .valid-feedback {
   margin-left: .5em; }
 
-.was-validated .input-group .form-control:valid, .input-group .form-control.is-valid, .was-validated
+.was-validated .input-group .form-control:valid, .was-validated .input-group .comment-input:valid, .input-group .form-control.is-valid, .input-group .is-valid.comment-input, .was-validated
 .input-group .form-select:valid,
 .input-group .form-select.is-valid {
   z-index: 1; }
-  .was-validated .input-group .form-control:valid:focus, .input-group .form-control.is-valid:focus, .was-validated
+  .was-validated .input-group .form-control:valid:focus, .was-validated .input-group .comment-input:valid:focus, .input-group .form-control.is-valid:focus, .input-group .is-valid.comment-input:focus, .was-validated
   .input-group .form-select:valid:focus,
   .input-group .form-select.is-valid:focus {
     z-index: 3; }
@@ -2100,18 +2101,18 @@ textarea.form-control-lg {
 .is-invalid ~ .invalid-tooltip {
   display: block; }
 
-.was-validated .form-control:invalid, .form-control.is-invalid {
+.was-validated .form-control:invalid, .was-validated .comment-input:invalid, .form-control.is-invalid, .is-invalid.comment-input {
   border-color: #dc3545;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right calc(0.375em + 0.1875rem) center;
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem); }
-  .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
+  .was-validated .form-control:invalid:focus, .was-validated .comment-input:invalid:focus, .form-control.is-invalid:focus, .is-invalid.comment-input:focus {
     border-color: #dc3545;
     box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25); }
 
-.was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
+.was-validated textarea.form-control:invalid, .was-validated textarea.comment-input:invalid, textarea.form-control.is-invalid, textarea.is-invalid.comment-input {
   padding-right: calc(1.5em + 0.75rem);
   background-position: top calc(0.375em + 0.1875rem) right calc(0.375em + 0.1875rem); }
 
@@ -2141,11 +2142,11 @@ textarea.form-control-lg {
 .form-check-inline .form-check-input ~ .invalid-feedback {
   margin-left: .5em; }
 
-.was-validated .input-group .form-control:invalid, .input-group .form-control.is-invalid, .was-validated
+.was-validated .input-group .form-control:invalid, .was-validated .input-group .comment-input:invalid, .input-group .form-control.is-invalid, .input-group .is-invalid.comment-input, .was-validated
 .input-group .form-select:invalid,
 .input-group .form-select.is-invalid {
   z-index: 2; }
-  .was-validated .input-group .form-control:invalid:focus, .input-group .form-control.is-invalid:focus, .was-validated
+  .was-validated .input-group .form-control:invalid:focus, .was-validated .input-group .comment-input:invalid:focus, .input-group .form-control.is-invalid:focus, .input-group .is-invalid.comment-input:focus, .was-validated
   .input-group .form-select:invalid:focus,
   .input-group .form-select.is-invalid:focus {
     z-index: 3; }
@@ -5642,7 +5643,7 @@ textarea.form-control-lg {
 .d-table-cell {
   display: table-cell !important; }
 
-.d-flex {
+.d-flex, .profile-column, .comment-column, .comment-btn-column {
   display: flex !important; }
 
 .d-inline-flex {
@@ -5828,7 +5829,7 @@ textarea.form-control-lg {
 .w-75 {
   width: 75% !important; }
 
-.w-100 {
+.w-100, .comment-input {
   width: 100% !important; }
 
 .w-auto {
@@ -5909,7 +5910,7 @@ textarea.form-control-lg {
 .justify-content-end {
   justify-content: flex-end !important; }
 
-.justify-content-center {
+.justify-content-center, .profile-column {
   justify-content: center !important; }
 
 .justify-content-between {
@@ -5927,7 +5928,7 @@ textarea.form-control-lg {
 .align-items-end {
   align-items: flex-end !important; }
 
-.align-items-center {
+.align-items-center, .profile-column, .comment-column, .comment-btn-column {
   align-items: center !important; }
 
 .align-items-baseline {
@@ -6583,7 +6584,7 @@ textarea.form-control-lg {
 .rounded-5 {
   border-radius: var(--bs-border-radius-2xl) !important; }
 
-.rounded-circle {
+.rounded-circle, .profile-img {
   border-radius: 50% !important; }
 
 .rounded-pill {
@@ -8342,3 +8343,10 @@ textarea.form-control-lg {
     display: inline-flex !important; }
   .d-print-none {
     display: none !important; } }
+
+.debug {
+  border: solid 1px red; }
+
+.profile-img {
+  max-width: 35px;
+  max-height: 35px; }

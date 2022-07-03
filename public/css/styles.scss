@@ -1,1 +1,37 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
+.debug {
+    border: solid 1px red;
+}
+
+.profile {
+    &-column {
+        @extend .col-md-1;
+        @extend .d-flex;
+        @extend .align-items-center;
+        @extend .justify-content-center;
+    }
+    &-img {
+        max-width: 35px;
+        max-height: 35px;
+        @extend .img-fluid;
+        @extend .rounded-circle;
+    }
+}
+.comment {
+    &-column {
+        @extend .col-md-9;
+        @extend .d-flex;
+        @extend .align-items-center;
+    }
+    &-input {
+        @extend .form-control;
+        @extend .w-100;
+    }
+}
+
+.comment-btn-column {
+    @extend .col-md-2;
+    @extend .d-flex;
+    @extend .align-items-center;
+} 

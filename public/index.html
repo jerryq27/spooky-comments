@@ -8,25 +8,44 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <h2>Discussion</h2>
-    <form
-        name="comment-form"
-        action="/backend/addcomment"
-        method="POST"
-        onsubmit="return validateComment();">
-        <input
-            name="comment-text"
-            type="text"
-            placeholder="What are your thoughts?">
-        <input
-            name="submit-btn"
-            type="submit"
-            value="Comment"><br><br>
-        <hr>
-    </form>
-    
-    <div id="comments">
+    <div class="container">
+        <h2 class="row">Discussion</h2>
+        <form
+            class="row my-3"
+            name="comment-form"
+            action="/backend/addcomment"
+            method="POST"
+            onsubmit="return validateComment();">
+ 
+            <div class="profile-column">
+                <img 
+                    class="profile-img"
+                    src="img/sample-avatar-1.png"
+                    alt="Avatar">
+            </div>
 
+            <div class="comment-column">
+                <input
+                    class="comment-input"
+                    name="comment-input"
+                    type="text"
+                    placeholder="What are your thoughts?">
+            </div>
+
+            <div class="comment-btn-column">
+                <input
+                    class="btn"
+                    name="submit-btn"
+                    type="submit"
+                    value="Comment">
+            </div>
+            <br><br>
+            <hr class="my-4">
+        </form>
+
+        <div id="comments" class="row">
+
+        </div>
     </div>
 
     <script src="js/index.js" type="text/javascript"></script>

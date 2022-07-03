@@ -78,7 +78,7 @@ createCommentComponent = (comment) => {
 
 validateComment = () => {
     const form = document.querySelector('form[name="comment-form"]');
-    const commentText = form.elements['comment-text'].value;
+    const commentText = form.elements['comment-input'].value;
 
     if(commentText) {
         return true;
