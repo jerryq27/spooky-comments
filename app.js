@@ -47,14 +47,22 @@ let comments = [
     }
 ];
 
+// Endpoints
 app.get('/', (req, res) => {
     res.sendFile('./index.html');
-})
+});
 
 app.get('/backend/hello', (req, res) => {
+    res.statusCode = 200;
     res.send('Hello, world!');
-})
+});
 
+app.get('/backend/comments', (req, res) => {
+    res.statusCode = 200;
+    res.json(comments);
+});
+
+// Run Server
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
