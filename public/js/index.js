@@ -23,6 +23,7 @@ getComments = () => {
 
 generateComments = (comments) => {
     const uList = document.createElement('ul');
+    uList.style.listStyle = 'none';
 
     comments.forEach(comment => {
         const listItem = createCommentComponent(comment);
@@ -44,23 +45,23 @@ createCommentComponent = (comment) => {
 
     const userSpan = document.createElement('span');
     userSpan.setAttribute('class', 'user');
-
+        
     const timestampSpan = document.createElement('span');
-    timestampSpan.setAttribute('class', 'timestamp');
+    timestampSpan.setAttribute('class', 'text-muted');
 
     const commentText = document.createElement('p');
     commentText.setAttribute('class', 'comment-text');
-
+    
     const upvoteCtrl = document.createElement('button');
-    upvoteCtrl.setAttribute('class', 'upvote btn btn-link');
-
+    upvoteCtrl.setAttribute('class', 'link-btn');
+    
     const replyCtrl = document.createElement('button');
-    replyCtrl.setAttribute('class', 'reply btn btn-link');
-
+    replyCtrl.setAttribute('class', 'link-btn');
+    
     const spacerSpan = document.createElement('span');
 
     userSpan.innerText = comment.user;
-    spacerSpan.innerText = ' * ';
+    spacerSpan.innerText = ' • ';
     timestampSpan.innerText = comment.timestamp;
     commentText.innerText = comment.comment;
     upvoteCtrl.innerText = '^ Upvote';

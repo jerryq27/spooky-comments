@@ -1,4 +1,7 @@
+$primary: #7E34f6;
+
 @import "../../node_modules/bootstrap/scss/bootstrap";
+
 
 .debug {
     border: solid 1px red;
@@ -28,10 +31,19 @@
         @extend .form-control;
         @extend .w-100;
     }
+    &-btn {
+        @extend .btn;
+        @extend .btn-primary;
+
+        &-column {
+            @extend .col-md-2;
+            @extend .d-flex;
+            @extend .align-items-center;
+        }
+    }
 }
 
-.comment-btn-column {
-    @extend .col-md-2;
-    @extend .d-flex;
-    @extend .align-items-center;
-} 
+.link-btn {
+    @extend .btn;
+    @extend .btn-link;
+}
