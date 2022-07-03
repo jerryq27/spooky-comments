@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 let comments = [
     {
-        id: 1,
+        id: '1',
         user: 'Rob Hope',
         timestamp: '45 min ago',
         comment: 'Jeepers now that\'s a huge release with some big ' +
@@ -22,7 +22,7 @@ let comments = [
         children: [],
     },
     {
-        id: 2,
+        id: '2',
         user: 'Sophie Brecht',
         timestamp: 'Yesterday',
         comment: 'Switched our blog from Hubspot to Ghost a year ago -- ' +
@@ -30,7 +30,7 @@ let comments = [
             'update....the in-platform analytics look expecially delicious. :)',
         children: [
             {
-                id: 2.1,
+                id: '2-1',
                 user: 'James',
                 timestamp: '2 hrs ago',
                 comment: 'Thanks Sophie! Last year has been an absolut goldrush for ' +
@@ -40,7 +40,7 @@ let comments = [
         ]
     },
     {
-        id: 4,
+        id: '3',
         user: 'Cameron Lawrence',
         timestamp: '3 weeks ago',
         comment: 'Love the native memberships and the zipless themes, I was ' +
@@ -52,7 +52,7 @@ let comments = [
 
 let commentTemplate = {
     id: null,
-    user: '',
+    user: 'Rob Hope',
     timestamp: '',
     comment: '',
     children: []
@@ -61,11 +61,6 @@ let commentTemplate = {
 // Endpoints
 app.get('/', (req, res) => {
     res.sendFile('./index.html');
-});
-
-app.get('/backend/hello', (req, res) => {
-    res.statusCode = 200;
-    res.send('Hello, world!');
 });
 
 app.get('/backend/comments', (req, res) => {
