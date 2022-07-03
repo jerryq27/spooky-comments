@@ -33,7 +33,7 @@ generateComments = (comments) => {
             listItem.append(childList);
         }
     });
-    
+
     return uList;
 }
 
@@ -52,7 +52,7 @@ createCommentComponent = (comment) => {
     commentText.setAttribute('class', 'comment-text');
 
     const upvoteCtrl = document.createElement('button');
-    upvoteCtrl.setAttribute('class', 'upvote');
+    upvoteCtrl.setAttribute('class', 'upvote btn btn-link');
 
     const replyCtrl = document.createElement('button');
     replyCtrl.setAttribute('class', 'reply');
