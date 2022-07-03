@@ -22,6 +22,16 @@ getComments = () => {
     json.forEach(comment => {
         const listItem = createCommentComponent(comment);
         comments.appendChild(listItem);
+        
+        // Handle children comments
+        if(comment.children) {
+            const nestedList = document.createElement('ul');
+            comment.children.forEach(child => {
+                const childItem = createCommentComponent(child);
+                nestedList.appendChild(childItem);
+            });
+            listItem.appendChild(nestedList);
+        }
     });
 }
 
