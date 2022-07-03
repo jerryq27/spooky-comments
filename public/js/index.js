@@ -18,35 +18,22 @@ getComments = () => {
     xmlReq.send(null);
     let json = JSON.parse(xmlReq.responseText);
 
-    // Create list elements.
-    // json.forEach(comment => {
-    //     const listItem = createCommentComponent(comment);
-    //     comments.appendChild(listItem);
-        
-    //     // Handle children comments
-    //     if(comment.children) {
-    //         const nestedList = document.createElement('ul');
-    //         comment.children.forEach(child => {
-    //             const childItem = createCommentComponent(child);
-    //             nestedList.appendChild(childItem);
-    //         });
-    //         listItem.appendChild(nestedList);
-    //     }
-    // });
     commentsDiv.append(generateComments(json));
 }
 
 generateComments = (comments) => {
     const uList = document.createElement('ul');
+
     comments.forEach(comment => {
         const listItem = createCommentComponent(comment);
         uList.append(listItem);
 
         if(comment.children) {
             const childList = generateComments(comment.children);
-            uList.append(childList);
+            listItem.append(childList);
         }
     });
+    
     return uList;
 }
 
