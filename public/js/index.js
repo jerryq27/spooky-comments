@@ -10,7 +10,7 @@ document.onreadystatechange = () => {
 }
 
 getComments = () => {
-    const comments = document.getElementById('comments');
+    const commentsDiv = document.getElementById('comments');
 
     // Make GET request.
     let xmlReq = new XMLHttpRequest();
@@ -19,20 +19,35 @@ getComments = () => {
     let json = JSON.parse(xmlReq.responseText);
 
     // Create list elements.
-    json.forEach(comment => {
-        const listItem = createCommentComponent(comment);
-        comments.appendChild(listItem);
+    // json.forEach(comment => {
+    //     const listItem = createCommentComponent(comment);
+    //     comments.appendChild(listItem);
         
-        // Handle children comments
+    //     // Handle children comments
+    //     if(comment.children) {
+    //         const nestedList = document.createElement('ul');
+    //         comment.children.forEach(child => {
+    //             const childItem = createCommentComponent(child);
+    //             nestedList.appendChild(childItem);
+    //         });
+    //         listItem.appendChild(nestedList);
+    //     }
+    // });
+    commentsDiv.append(generateComments(json));
+}
+
+generateComments = (comments) => {
+    const uList = document.createElement('ul');
+    comments.forEach(comment => {
+        const listItem = createCommentComponent(comment);
+        uList.append(listItem);
+
         if(comment.children) {
-            const nestedList = document.createElement('ul');
-            comment.children.forEach(child => {
-                const childItem = createCommentComponent(child);
-                nestedList.appendChild(childItem);
-            });
-            listItem.appendChild(nestedList);
+            const childList = generateComments(comment.children);
+            uList.append(childList);
         }
     });
+    return uList;
 }
 
 createCommentComponent = (comment) => {
