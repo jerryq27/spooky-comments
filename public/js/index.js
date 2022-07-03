@@ -27,12 +27,3 @@ getComments = () => {
         comments.appendChild(listItem);
     });
 }
-
-// Handle form submit/post.
-commentForm.onsubmit = (event) => {
-    // event.prevenDefault(); // Prevents the page from refreshing.
-    addComment(input.value);
-}
-function addComment(comment) {
-    // Make post request.
-}
