@@ -69,6 +69,31 @@ let commentTemplate = {
     children: []
 };
 
+/**
+ * Recursive function to find comments.
+ * @param {string} searchId the id of the comment to search for.
+ * @param {number[]} idNums the id string as an array: '2-1-1' = [2, 1, 1]
+ * @param {Object[]} commentThread the thread of comments to search.
+ * @param {number} start the start of the id array.
+ * @param {number} end the end of the id array.
+ * @returns {Object} reference to the comment object.
+ */
+ const findComment = (searchId, idNums, commentThread, start, end) => {
+    if(end > idNums.length) return;
+
+    const result = commentThread.find(c => c.id === searchId);
+    if(result) return result;
+
+    const parentId = idNums.slice(start, end).join('-');
+    const parent = commentThread.find(c => c.id === parentId);
+    // console.log('id: ' + parentId)
+    // console.log('parent: ' + JSON.stringify(parent));
+    if(!parent) return;
+    if(parent.children) {
+        return findComment(searchId, idNums, parent.children, start, end + 1);
+    }
+};
+
 // Endpoints
 app.get('/', (req, res) => {
     res.sendFile('./index.html');
@@ -90,7 +115,8 @@ app.post('/backend/addcomment', (req, res) => {
 
 app.put('/backend/update/:id', (req, res) => {
     const id = req.params.id;
-    const comment = comments[id];
+    const comment = findComment(id, id.split('-'), comments, 0, 1);
+    // console.log(`${id} => ${JSON.stringify(comment)}`);
 
     if(comment) {
         console.log('updating ' + id)
