@@ -9,12 +9,17 @@
 </head>
 <body>
     <h2>Discussion</h2>
-    <form action="/backend/addcomment" method="POST">
+    <form
+        name="comment-form"
+        action="/backend/addcomment"
+        method="POST"
+        onsubmit="return validateComment();">
         <input
-            name="comment"
+            name="comment-text"
             type="text"
             placeholder="What are your thoughts?">
         <input
+            name="submit-btn"
             type="submit"
             value="Comment"><br><br>
         <hr>

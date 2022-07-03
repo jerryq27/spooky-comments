@@ -71,7 +71,7 @@ app.get('/backend/comments', (req, res) => {
 app.post('/backend/addcomment', (req, res) => {
     // Deep copy the template.
     let newComment = {...commentTemplate};
-    newComment.comment = req.body.comment;
+    newComment.comment = req.body['comment-text'];
     comments.push(newComment);
 
     res.redirect('/');

@@ -55,7 +55,7 @@ createCommentComponent = (comment) => {
     upvoteCtrl.setAttribute('class', 'upvote btn btn-link');
 
     const replyCtrl = document.createElement('button');
-    replyCtrl.setAttribute('class', 'reply');
+    replyCtrl.setAttribute('class', 'reply btn btn-link');
 
     const spacerSpan = document.createElement('span');
 
@@ -74,4 +74,17 @@ createCommentComponent = (comment) => {
     container.appendChild(replyCtrl);
 
     return container;
+}
+
+validateComment = () => {
+    const form = document.querySelector('form[name="comment-form"]');
+    const commentText = form.elements['comment-text'].value;
+
+    if(commentText) {
+        return true;
+    }
+    else {
+        alert('Must submit a value.');
+        return false;
+    }
 }
