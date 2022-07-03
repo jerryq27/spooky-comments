@@ -43,17 +43,35 @@ createCommentComponent = (comment) => {
     container.setAttribute('id', `comment-${comment.id}`)
     container.setAttribute('class', 'comment');
 
+    // Create elements.
     const userSpan = document.createElement('span');
-    userSpan.setAttribute('class', 'user');
-        
     const timestampSpan = document.createElement('span');
-    timestampSpan.setAttribute('class', 'text-muted');
-
     const commentText = document.createElement('p');
-    commentText.setAttribute('class', 'comment-text');
-    
     const upvoteCtrl = document.createElement('button');
+    const replyCtrl = document.createElement('button');
+    const replyDiv = document.createElement('div');
+    const replyTextArea = document.createElement('textarea');
+    const replyCommentBtn = document.createElement('button');
+    const spacerSpan = document.createElement('span');
+
+    // Set the attributes.
+    userSpan.setAttribute('class', 'user');
+    timestampSpan.setAttribute('class', 'text-muted');
+    commentText.setAttribute('class', 'comment-text');
     upvoteCtrl.setAttribute('class', 'link-btn');
+
+    replyTextArea.setAttribute('class', 'form-control');
+    replyTextArea.setAttribute('rows', '3');
+    replyCommentBtn.setAttribute('class', 'btn btn-primary');
+
+    replyDiv.appendChild(replyTextArea);
+    replyDiv.appendChild(document.createElement('br'));
+    replyDiv.appendChild(replyCommentBtn);
+
+    replyCtrl.setAttribute('class', 'link-btn');
+    replyDiv.setAttribute('hidden', '')
+
+    // Onclick events.
     upvoteCtrl.onclick = () => {
         // Make PUT request.
         // comment.upvotes += 1;
@@ -62,26 +80,34 @@ createCommentComponent = (comment) => {
         xmlReq.open('PUT', `${url}/update/${comment.id}`, false);
         xmlReq.setRequestHeader('Content-type', 'application/json')
         xmlReq.send(null);
+        window.location.reload();
+    };
+    replyCtrl.onclick = () => {
+        replyDiv.hasAttribute('hidden')? 
+            replyDiv.removeAttribute('hidden') :
+            replyDiv.setAttribute('hidden', '');
+    };
+    replyCommentBtn.onclick = () => {
+        replyDiv.setAttribute('hidden', '');
     }
-    
-    const replyCtrl = document.createElement('button');
-    replyCtrl.setAttribute('class', 'link-btn');
-    
-    const spacerSpan = document.createElement('span');
 
+    // Set comment data.
     userSpan.innerText = comment.user;
     spacerSpan.innerText = ' • ';
     timestampSpan.innerText = comment.timestamp;
     commentText.innerText = comment.comment;
     upvoteCtrl.innerText = comment.upvotes > 0? `▲ Upvote (${comment.upvotes})` : '▲ Upvote';
     replyCtrl.innerText = 'Reply';
+    replyCommentBtn.innerText = 'Reply';
 
+    // Construct the component.
     container.appendChild(userSpan);
     container.appendChild(spacerSpan);
     container.appendChild(timestampSpan);
     container.appendChild(commentText);
     container.appendChild(upvoteCtrl);
     container.appendChild(replyCtrl);
+    container.appendChild(replyDiv);
 
     return container;
 }
