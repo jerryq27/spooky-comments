@@ -2,6 +2,7 @@ $primary: #7E34f6;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+// Globals
 h2 {
     font-weight: bolder;
 }
@@ -11,35 +12,64 @@ ul {
 span {
     @extend .px-1;
 }
+img {
+    @extend .img-fluid;
+    @extend .rounded-circle;
+    max-width: 35px;
+    max-height: 35px;
+}
 
 .debug {
     border: solid 1px red;
 }
 
-// Top controls avatar.
-.profile {
-    &-column {
-        @extend .col-md-1;
-        @extend .d-flex;
-        @extend .align-items-center;
-        @extend .justify-content-center;
+// Header controls
+.header {
+    &-form {
+        @extend .row;
+        @extend .my-3;
     }
-    &-img {
-        max-width: 35px;
-        max-height: 35px;
-        @extend .img-fluid;
-        @extend .rounded-circle;
-        @extend .ms-1;
+
+    &-avatar {
+        &-column {
+            @extend .col-md-1;
+            @extend .d-flex;
+            @extend .align-items-center;
+            @extend .justify-content-center;
+        }
+        &-img {
+            @extend .ms-2;
+        }
+    }
+    &-comment {
+        @extend .py-1;
+        @extend .container;
+
+        &-column {
+            @extend .col-md-9;
+            @extend .d-flex;
+            @extend .align-items-center;
+        }
+        &-input {
+            @extend .form-control;
+            @extend .w-100;
+        }
+    }
+    &-btn {
+        @extend .btn;
+        @extend .btn-primary;
+
+        &-column {
+            @extend .col-md-2;
+            @extend .d-flex;
+            @extend .align-items-center;
+        }
     }
 }
 
-// Comment thread avatars.
+// Comment threads.
 .avatar {
     @extend .col-auto;
-    
-    & > img {
-        @extend .rounded-circle;
-    }
 }
 
 .user {
@@ -56,25 +86,6 @@ span {
     @extend .py-1;
     @extend .container;
 
-    &-column {
-        @extend .col-md-9;
-        @extend .d-flex;
-        @extend .align-items-center;
-    }
-    &-input {
-        @extend .form-control;
-        @extend .w-100;
-    }
-    &-btn {
-        @extend .btn;
-        @extend .btn-primary;
-
-        &-column {
-            @extend .col-md-2;
-            @extend .d-flex;
-            @extend .align-items-center;
-        }
-    }
     &-without-child {
         @extend .comment;
         @extend .row;

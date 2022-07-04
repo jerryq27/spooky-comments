@@ -9,6 +9,9 @@ document.onreadystatechange = () => {
     }
 }
 
+/**
+ * Performs GET request to backend for comments.
+ */
 getComments = () => {
     const commentsDiv = document.getElementById('comments');
 
@@ -21,6 +24,10 @@ getComments = () => {
     commentsDiv.append(generateComments(json));
 }
 
+/**
+ * Recursive function to create comment components.
+ * @param {Object[]} comments comments in JSON format.
+ */
 generateComments = (comments) => {
     const uList = document.createElement('ul');
     uList.style.listStyle = 'none';
@@ -38,6 +45,10 @@ generateComments = (comments) => {
     return uList;
 }
 
+/**
+ * Creates HTML+Bootstrap component for a comment.
+ * @param {Object} comment the comment to use for the component.
+ */
 createCommentComponent = (comment) => {
     const container = document.createElement('li');
     container.setAttribute('id', `comment-${comment.id}`)
@@ -134,7 +145,7 @@ createCommentComponent = (comment) => {
     };
 
     // Set comment data.
-    avatarDiv.innerHTML = `<img src="${comment.avatar}" width="35px" height="35px">`
+    avatarDiv.innerHTML = `<img src="${comment.avatar}">`
     userSpan.innerText = comment.user;
     spacerSpan.innerHTML = '•';
     timestampSpan.innerText = comment.timestamp;

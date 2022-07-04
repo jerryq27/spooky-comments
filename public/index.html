@@ -11,31 +11,31 @@
     <div class="container">
         <h2 class="row">Discussion</h2>
         <form
-            class="row my-3"
+            class="header-form"
             name="comment-form"
             action="/backend/addcomment"
             method="POST"
             onsubmit="return validateComment();">
  
-            <div class="profile-column">
+            <div class="header-avatar-column">
                 <img 
-                    class="profile-img"
+                    class="header-avatar-img"
                     src="img/sample-avatar-1.png"
                     alt="Avatar">
             </div>
 
-            <div class="comment-column">
+            <div class="header-comment-column">
                 <input
-                    class="comment-input"
+                    class="header-comment-input"
                     name="comment-input"
                     type="text"
                     placeholder="What are your thoughts?">
             </div>
 
-            <div class="comment-btn-column">
+            <div class="header-btn-column">
                 <input
-                    class="comment-btn"
-                    name="comment-btn-ctrl"
+                    class="header-btn"
+                    name="header-btn-ctrl"
                     type="submit"
                     value="Comment">
             </div>

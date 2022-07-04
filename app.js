@@ -88,8 +88,7 @@ let commentTemplate = {
 
     const parentId = idNums.slice(start, end).join('-');
     const parent = commentThread.find(c => c.id === parentId);
-    // console.log('id: ' + parentId)
-    // console.log('parent: ' + JSON.stringify(parent));
+
     if(!parent) return;
     if(parent.children) {
         return findComment(searchId, idNums, parent.children, start, end + 1);
@@ -108,7 +107,6 @@ app.get('/backend/comments', (req, res) => {
 
 app.post('/backend/addcomment', (req, res) => {
     // Deep copy the template.
-    // let newComment = {...commentTemplate};
     const newComment = JSON.parse(JSON.stringify(commentTemplate));
     newComment.id = `${comments.length + 1}`;
     newComment.comment = req.body['comment-input'];
@@ -121,10 +119,7 @@ app.put('/backend/addreply/:id', (req, res) => {
     const id = req.params.id;
     const parentComment = findComment(id, id.split('-'), comments, 0, 1);
 
-    // console.log(req.body);
-
     if(parentComment) {
-        // const reply = {...commentTemplate};
         const reply = JSON.parse(JSON.stringify(commentTemplate));
         reply.id = parentComment.id + `-${parentComment.children.length + 1}`
         reply.comment = req.body['reply-input'];
@@ -138,15 +133,14 @@ app.put('/backend/addreply/:id', (req, res) => {
 app.put('/backend/upvote/:id', (req, res) => {
     const id = req.params.id;
     const comment = findComment(id, id.split('-'), comments, 0, 1);
-    // console.log(`${id} => ${JSON.stringify(comment)}`);
 
     if(comment) {
         console.log('updating ' + id)
         comment.upvotes += 1;
         res.statusCode = 200;
     }
-    // console.log(JSON.stringify(comment));
-    res.send(JSON.stringify(comment));
+
+    res.send(comment);
 });
 
 // Run Server
