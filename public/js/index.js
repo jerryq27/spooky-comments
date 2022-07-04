@@ -77,7 +77,7 @@ createCommentComponent = (comment) => {
         // comment.upvotes += 1;
 
         const xmlReq = new XMLHttpRequest();
-        xmlReq.open('PUT', `${url}/update/${comment.id}`, false);
+        xmlReq.open('PUT', `${url}/upvote/${comment.id}`, false);
         xmlReq.setRequestHeader('Content-type', 'application/json')
         xmlReq.send(null);
         window.location.reload();

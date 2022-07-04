@@ -114,7 +114,7 @@ app.post('/backend/addcomment', (req, res) => {
     res.redirect('/');
 });
 
-app.put('/backend/update/:id', (req, res) => {
+app.put('/backend/upvote/:id', (req, res) => {
     const id = req.params.id;
     const comment = findComment(id, id.split('-'), comments, 0, 1);
     // console.log(`${id} => ${JSON.stringify(comment)}`);
