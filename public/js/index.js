@@ -1,6 +1,6 @@
 // Get DOM elements for the form, comment input, and comment list.
 
-const url = 'http://localhost:8000/backend'
+const url = 'http://localhost:8000/backend';
 
 // Get the comments and render list.
 document.onreadystatechange = () => {
@@ -21,6 +21,7 @@ getComments = () => {
     xmlReq.send(null);
     let json = JSON.parse(xmlReq.responseText);
 
+    // Create list elements.
     commentsDiv.append(generateComments(json));
 }
 

@@ -80,7 +80,7 @@ let commentTemplate = {
  * @param {number} end the end of the id array.
  * @returns {Object} reference to the comment object.
  */
- const findComment = (searchId, idNums, commentThread, start, end) => {
+const findComment = (searchId, idNums, commentThread, start, end) => {
     if(end > idNums.length) return;
 
     const result = commentThread.find(c => c.id === searchId);
@@ -135,7 +135,6 @@ app.put('/backend/upvote/:id', (req, res) => {
     const comment = findComment(id, id.split('-'), comments, 0, 1);
 
     if(comment) {
-        console.log('updating ' + id)
         comment.upvotes += 1;
         res.statusCode = 200;
     }
