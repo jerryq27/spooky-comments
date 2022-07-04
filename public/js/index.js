@@ -81,6 +81,7 @@ createCommentComponent = (comment) => {
     const userSpan = document.createElement('span');
     const timestampSpan = document.createElement('span');
     const commentText = document.createElement('p');
+    const reactContainerDiv = document.createElement('div');
     const upvoteBtn = document.createElement('button');
     const replyBtn = document.createElement('button');
     const replySectionDiv = document.createElement('div');
@@ -101,6 +102,8 @@ createCommentComponent = (comment) => {
     timestampSpan.setAttribute('class', 'timestamp');
     commentText.setAttribute('class', 'comment-text');
     upvoteBtn.setAttribute('class', 'upvote-btn');
+    reactContainerDiv.setAttribute('class', 'react-container col-auto');
+    reactContainerDiv.setAttribute('data-commentid', comment.id);
 
     replyTextArea.setAttribute('class', 'form-control');
     replyTextArea.setAttribute('rows', '3');
@@ -152,6 +155,7 @@ createCommentComponent = (comment) => {
     timestampSpan.innerText = comment.timestamp;
     commentText.innerText = comment.comment;
     upvoteBtn.innerText = comment.upvotes > 0? `▲ Upvote (${comment.upvotes})` : '▲ Upvote';
+    // reactContainerDiv.innerHTML = '<button>React Button</button>';
     replyBtn.innerText = 'Reply';
     replyCommentBtn.innerText = 'Reply';
 
@@ -164,6 +168,7 @@ createCommentComponent = (comment) => {
 
     commentCtrlsDiv.appendChild(upvoteBtn);
     commentCtrlsDiv.appendChild(replyBtn);
+    commentCtrlsDiv.appendChild(reactContainerDiv);
     commentCtrlsDiv.appendChild(replySectionDiv);
 
     commentInfoDiv.appendChild(userTimestampDiv);
@@ -187,4 +192,37 @@ validateComment = () => {
         alert('Must submit a value.');
         return false;
     }
+}
+
+const renderReactButtons = () => {
+    const e = React.createElement;
+
+    class LikeButton extends React.Component {
+        constructor(props) {
+            super(props);
+            this.state = { liked: false };
+        }
+
+        render() {
+            if (this.state.liked) {
+                return 'You liked comment number ' + this.props.commentID;
+            }
+
+            const attrs = {
+                onClick: () => this.setState({ liked: true }),
+                className: 'debug',
+            }
+
+            return e('button', attrs, 'Like');
+        }
+    }
+
+    // Render React button.
+    document.querySelectorAll('.react-container').forEach(rcontainer => {
+        const commentId = parseInt(rcontainer.dataset.commentid, 10);
+
+        const root = ReactDOM.createRoot(rcontainer);
+        root.render(e(LikeButton, { commentID: commentId }));
+    });
+    console.log('finished rendering react.')
 }
