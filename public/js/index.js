@@ -6,6 +6,7 @@ const url = 'http://localhost:8000/backend';
 document.onreadystatechange = () => {
     if(document.readyState === 'complete') {
         getComments();
+        renderReactButtons();
     }
 }
 
@@ -104,6 +105,7 @@ createCommentComponent = (comment) => {
     upvoteBtn.setAttribute('class', 'upvote-btn');
     reactContainerDiv.setAttribute('class', 'react-container col-auto');
     reactContainerDiv.setAttribute('data-commentid', comment.id);
+    reactContainerDiv.setAttribute('data-upvotes', comment.upvotes);
 
     replyTextArea.setAttribute('class', 'form-control');
     replyTextArea.setAttribute('rows', '3');
@@ -195,34 +197,47 @@ validateComment = () => {
 }
 
 const renderReactButtons = () => {
-    const e = React.createElement;
 
-    class LikeButton extends React.Component {
+    class UpvoteButton extends React.Component {
         constructor(props) {
             super(props);
-            this.state = { liked: false };
+            this.state = {
+                upvotes: props.upvotes,
+                liked: false,
+            };
+        }
+    
+        handleUpvote = () => {
+            // Update the state.
+            this.setState({ upvotes: this.state.upvotes + 1 });
+            
+            // Make PUT request.
+            const xmlReq = new XMLHttpRequest();
+            xmlReq.open('PUT', `${url}/upvote/${this.props.commentId}`, false);
+            xmlReq.setRequestHeader('Content-type', 'application/json')
+            xmlReq.send(null);
         }
 
         render() {
-            if (this.state.liked) {
-                return 'You liked comment number ' + this.props.commentID;
+            const attributes = {
+                onClick: () => this.handleUpvote(),
+                className: 'upvote-btn',
             }
 
-            const attrs = {
-                onClick: () => this.setState({ liked: true }),
-                className: 'debug',
-            }
-
-            return e('button', attrs, 'Like');
+            return React.createElement(
+                'button',
+                attributes,
+                this.state.upvotes > 0? `▲ Upvote (${this.state.upvotes})` : '▲ Upvote'
+            );
         }
     }
 
-    // Render React button.
+    // Render React buttons.
     document.querySelectorAll('.react-container').forEach(rcontainer => {
-        const commentId = parseInt(rcontainer.dataset.commentid, 10);
+        const commentIdData = rcontainer.dataset.commentid;
+        const upvoteData = parseInt(rcontainer.dataset.upvotes, 10);
 
         const root = ReactDOM.createRoot(rcontainer);
-        root.render(e(LikeButton, { commentID: commentId }));
+        root.render(React.createElement(UpvoteButton, { commentId: commentIdData, upvotes: upvoteData }));
     });
-    console.log('finished rendering react.')
 }
