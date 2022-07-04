@@ -108,7 +108,8 @@ app.get('/backend/comments', (req, res) => {
 
 app.post('/backend/addcomment', (req, res) => {
     // Deep copy the template.
-    let newComment = {...commentTemplate};
+    // let newComment = {...commentTemplate};
+    const newComment = JSON.parse(JSON.stringify(commentTemplate));
     newComment.id = `${comments.length + 1}`;
     newComment.comment = req.body['comment-input'];
     comments.push(newComment);
@@ -123,14 +124,15 @@ app.put('/backend/addreply/:id', (req, res) => {
     // console.log(req.body);
 
     if(parentComment) {
-        const reply = {...commentTemplate};
+        // const reply = {...commentTemplate};
+        const reply = JSON.parse(JSON.stringify(commentTemplate));
         reply.id = parentComment.id + `-${parentComment.children.length + 1}`
         reply.comment = req.body['reply-input'];
         parentComment.children.push(reply);
 
         res.statusCode = 200;
     }
-    res.send(JSON.stringify(parentComment));
+    res.send(parentComment);
 });
 
 app.put('/backend/upvote/:id', (req, res) => {
