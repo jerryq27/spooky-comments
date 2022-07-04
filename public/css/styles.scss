@@ -9,6 +9,7 @@ h2 {
     border: solid 1px red;
 }
 
+// Top controls avatar.
 .profile {
     &-column {
         @extend .col-md-1;
@@ -24,12 +25,33 @@ h2 {
     }
 }
 
+// Comment thread avatars.
+.avatar {
+    @extend .col-auto;
+    
+    & > img {
+        @extend .rounded-circle;
+    }
+}
+
 .user {
     @extend .fw-semibold;
 }
 
+.parent-comment {
+    background: linear-gradient(lightgray, lightgray);
+    background-position: 41.5px 21.5px;
+    background-size: 1px 90%;
+    background-repeat: no-repeat;
+}
+
+.child-comment {
+    @extend .ps-5;
+}
+
 .comment {
-    @extend .p-2;
+    @extend .py-1;
+    @extend .container;
 
     &-column {
         @extend .col-md-9;
@@ -56,6 +78,7 @@ $btn-text-color: #525e81;
 .upvote-btn, .reply-btn {
     @extend .btn;
     @extend .btn-link;
+    @extend .col-auto;
     text-decoration: none;
     padding-left: 0;
     color: $btn-text-color;

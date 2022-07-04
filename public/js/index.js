@@ -41,9 +41,31 @@ generateComments = (comments) => {
 createCommentComponent = (comment) => {
     const container = document.createElement('li');
     container.setAttribute('id', `comment-${comment.id}`)
-    container.setAttribute('class', 'comment');
 
-    // Create elements.
+    let classes = '';
+    if(comment.id.length === 1 && comment.children.length > 0) {
+        // Parent with children.
+        classes = 'comment row parent-comment';
+    }
+    else if(comment.id.length > 1) {
+        // Child
+        classes = 'comment row child-comment';
+    }
+    else {
+        // Parent without children.
+        classes = 'comment row'
+    }
+    container.setAttribute('class', classes);
+
+    // Create Bootstrap grid elements
+    const avatarDiv = document.createElement('div');
+    const commentInfoDiv = document.createElement('div');
+    // Need 3 rows for comment info.
+    const userTimestampDiv = document.createElement('div');
+    const commentTextDiv = document.createElement('div');
+    const commentCtrlsDiv = document.createElement('div');
+
+    // Create comment elements.
     const userSpan = document.createElement('span');
     const timestampSpan = document.createElement('span');
     const commentText = document.createElement('p');
@@ -55,8 +77,16 @@ createCommentComponent = (comment) => {
     const spacerSpan = document.createElement('span');
 
     // Set the attributes.
-    userSpan.setAttribute('class', 'user');
-    timestampSpan.setAttribute('class', 'text-muted');
+    avatarDiv.setAttribute('class', 'avatar');
+    commentInfoDiv.setAttribute('class', 'col');
+
+    userTimestampDiv.setAttribute('class', 'row');
+    commentTextDiv.setAttribute('class', 'row');
+    commentCtrlsDiv.setAttribute('class', 'row');
+
+    userSpan.setAttribute('class', 'user col-auto');
+    spacerSpan.setAttribute('class', 'col-auto');
+    timestampSpan.setAttribute('class', 'text-muted col-auto');
     commentText.setAttribute('class', 'comment-text');
     upvoteBtn.setAttribute('class', 'upvote-btn');
 
@@ -104,8 +134,9 @@ createCommentComponent = (comment) => {
     };
 
     // Set comment data.
+    avatarDiv.innerHTML = `<img src="${comment.avatar}" width="35px" height="35px">`
     userSpan.innerText = comment.user;
-    spacerSpan.innerHTML = '&nbsp;&nbsp;•&nbsp;&nbsp;';
+    spacerSpan.innerHTML = '•';
     timestampSpan.innerText = comment.timestamp;
     commentText.innerText = comment.comment;
     upvoteBtn.innerText = comment.upvotes > 0? `▲ Upvote (${comment.upvotes})` : '▲ Upvote';
@@ -113,20 +144,22 @@ createCommentComponent = (comment) => {
     replyCommentBtn.innerText = 'Reply';
 
     // Construct the component.
-    container.appendChild(userSpan);
-    container.appendChild(spacerSpan);
-    container.appendChild(timestampSpan);
-    container.appendChild(commentText);
-    container.appendChild(upvoteBtn);
-    container.appendChild(replyBtn);
-    container.appendChild(replySectionDiv);
+    userTimestampDiv.appendChild(userSpan);
+    userTimestampDiv.appendChild(spacerSpan);
+    userTimestampDiv.appendChild(timestampSpan);
 
-    // Insert CSS pseudo-class for bullet images.
-    const listImgRule = `#${container.getAttribute('id')} {
-        background: url("/${comment.avatar}") no-repeat;
-        background-size: 35px 35px;
-    }`;
-    document.styleSheets[0].insertRule(listImgRule, 0);
+    commentTextDiv.appendChild(commentText);
+
+    commentCtrlsDiv.appendChild(upvoteBtn);
+    commentCtrlsDiv.appendChild(replyBtn);
+    commentCtrlsDiv.appendChild(replySectionDiv);
+
+    commentInfoDiv.appendChild(userTimestampDiv);
+    commentInfoDiv.appendChild(commentTextDiv);
+    commentInfoDiv.appendChild(commentCtrlsDiv);
+
+    container.appendChild(avatarDiv);
+    container.appendChild(commentInfoDiv);
 
     return container;
 }
