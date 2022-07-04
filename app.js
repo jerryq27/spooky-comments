@@ -110,7 +110,7 @@ app.post('/backend/addcomment', (req, res) => {
     // Deep copy the template.
     let newComment = {...commentTemplate};
     newComment.id = `${comments.length + 1}`;
-    newComment.comment = req.body['comment-text'];
+    newComment.comment = req.body['comment-input'];
     comments.push(newComment);
 
     res.redirect('/');
