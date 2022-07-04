@@ -505,7 +505,7 @@ progress {
   font-size: 0.875em;
   color: #6c757d; }
 
-.container, .comment,
+.container, .comment, .comment-without-child, .comment-with-child, .comment-child,
 .container-fluid,
 .container-sm,
 .container-md,
@@ -521,26 +521,26 @@ progress {
   margin-left: auto; }
 
 @media (min-width: 576px) {
-  .container, .comment, .container-sm {
+  .container, .comment, .comment-without-child, .comment-with-child, .comment-child, .container-sm {
     max-width: 540px; } }
 
 @media (min-width: 768px) {
-  .container, .comment, .container-sm, .container-md {
+  .container, .comment, .comment-without-child, .comment-with-child, .comment-child, .container-sm, .container-md {
     max-width: 720px; } }
 
 @media (min-width: 992px) {
-  .container, .comment, .container-sm, .container-md, .container-lg {
+  .container, .comment, .comment-without-child, .comment-with-child, .comment-child, .container-sm, .container-md, .container-lg {
     max-width: 960px; } }
 
 @media (min-width: 1200px) {
-  .container, .comment, .container-sm, .container-md, .container-lg, .container-xl {
+  .container, .comment, .comment-without-child, .comment-with-child, .comment-child, .container-sm, .container-md, .container-lg, .container-xl {
     max-width: 1140px; } }
 
 @media (min-width: 1400px) {
-  .container, .comment, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
+  .container, .comment, .comment-without-child, .comment-with-child, .comment-child, .container-sm, .container-md, .container-lg, .container-xl, .container-xxl {
     max-width: 1320px; } }
 
-.row {
+.row, .comment-without-child, .comment-with-child, .comment-child {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   display: flex;
@@ -548,7 +548,7 @@ progress {
   margin-top: calc(-1 * var(--bs-gutter-y));
   margin-right: calc(-.5 * var(--bs-gutter-x));
   margin-left: calc(-.5 * var(--bs-gutter-x)); }
-  .row > * {
+  .row > *, .comment-without-child > *, .comment-with-child > *, .comment-child > * {
     flex-shrink: 0;
     width: 100%;
     max-width: 100%;
@@ -587,7 +587,7 @@ progress {
   flex: 0 0 auto;
   width: 16.66667%; }
 
-.col-auto, .avatar, .upvote-btn, .reply-btn {
+.col-auto, .avatar, .user, .timestamp, .upvote-btn, .reply-btn {
   flex: 0 0 auto;
   width: auto; }
 
@@ -3067,7 +3067,7 @@ textarea.form-control-lg {
   align-items: center;
   justify-content: space-between;
   padding: var(--bs-navbar-padding-y) var(--bs-navbar-padding-x); }
-  .navbar > .container, .navbar > .comment,
+  .navbar > .container, .navbar > .comment, .navbar > .comment-without-child, .navbar > .comment-with-child, .navbar > .comment-child,
   .navbar > .container-fluid, .navbar > .container-sm, .navbar > .container-md, .navbar > .container-lg, .navbar > .container-xl, .navbar > .container-xxl {
     display: flex;
     flex-wrap: inherit;
@@ -6213,7 +6213,7 @@ textarea.form-control-lg {
 .ms-0 {
   margin-left: 0 !important; }
 
-.ms-1 {
+.ms-1, .profile-img {
   margin-left: 0.25rem !important; }
 
 .ms-2 {
@@ -6253,7 +6253,7 @@ textarea.form-control-lg {
   padding-right: 0 !important;
   padding-left: 0 !important; }
 
-.px-1 {
+.px-1, span {
   padding-right: 0.25rem !important;
   padding-left: 0.25rem !important; }
 
@@ -6261,7 +6261,7 @@ textarea.form-control-lg {
   padding-right: 0.5rem !important;
   padding-left: 0.5rem !important; }
 
-.px-3 {
+.px-3, ul {
   padding-right: 1rem !important;
   padding-left: 1rem !important; }
 
@@ -6277,7 +6277,7 @@ textarea.form-control-lg {
   padding-top: 0 !important;
   padding-bottom: 0 !important; }
 
-.py-1, .comment {
+.py-1, .comment, .comment-without-child, .comment-with-child, .comment-child {
   padding-top: 0.25rem !important;
   padding-bottom: 0.25rem !important; }
 
@@ -6366,7 +6366,7 @@ textarea.form-control-lg {
 .ps-4 {
   padding-left: 1.5rem !important; }
 
-.ps-5, .child-comment {
+.ps-5, .comment-child {
   padding-left: 3rem !important; }
 
 .gap-0 {
@@ -6527,7 +6527,7 @@ textarea.form-control-lg {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-body-color-rgb), var(--bs-text-opacity)) !important; }
 
-.text-muted {
+.text-muted, .timestamp {
   --bs-text-opacity: 1;
   color: rgba(var(--bs-body-color-rgb), 0.75) !important; }
 
@@ -8427,9 +8427,9 @@ h2, .h2 {
   max-width: 35px;
   max-height: 35px; }
 
-.parent-comment {
+.comment-with-child {
   background: linear-gradient(lightgray, lightgray);
-  background-position: 41.5px 21.5px;
+  background-position: 41px 21px;
   background-size: 1px 90%;
   background-repeat: no-repeat; }
 

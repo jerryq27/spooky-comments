@@ -5,6 +5,13 @@ $primary: #7E34f6;
 h2 {
     font-weight: bolder;
 }
+ul {
+    @extend .px-3;
+}
+span {
+    @extend .px-1;
+}
+
 .debug {
     border: solid 1px red;
 }
@@ -22,6 +29,7 @@ h2 {
         max-height: 35px;
         @extend .img-fluid;
         @extend .rounded-circle;
+        @extend .ms-1;
     }
 }
 
@@ -36,17 +44,12 @@ h2 {
 
 .user {
     @extend .fw-semibold;
+    @extend .col-auto;
 }
 
-.parent-comment {
-    background: linear-gradient(lightgray, lightgray);
-    background-position: 41.5px 21.5px;
-    background-size: 1px 90%;
-    background-repeat: no-repeat;
-}
-
-.child-comment {
-    @extend .ps-5;
+.timestamp {
+    @extend .text-muted;
+    @extend .col-auto;
 }
 
 .comment {
@@ -71,6 +74,23 @@ h2 {
             @extend .d-flex;
             @extend .align-items-center;
         }
+    }
+    &-without-child {
+        @extend .comment;
+        @extend .row;
+    }
+    &-with-child {
+        @extend .comment;
+        @extend .row;
+        background: linear-gradient(lightgray, lightgray);
+        background-position: 41px 21px;
+        background-size: 1px 90%;
+        background-repeat: no-repeat;
+    }
+    &-child {
+        @extend .comment;
+        @extend .row;
+        @extend .ps-5;
     }
 }
 

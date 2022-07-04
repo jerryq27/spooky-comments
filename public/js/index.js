@@ -45,15 +45,15 @@ createCommentComponent = (comment) => {
     let classes = '';
     if(comment.id.length === 1 && comment.children.length > 0) {
         // Parent with children.
-        classes = 'comment row parent-comment';
+        classes = 'comment-with-child';
     }
     else if(comment.id.length > 1) {
         // Child
-        classes = 'comment row child-comment';
+        classes = 'comment-child';
     }
     else {
         // Parent without children.
-        classes = 'comment row'
+        classes = 'comment-without-child'
     }
     container.setAttribute('class', classes);
 
@@ -84,9 +84,9 @@ createCommentComponent = (comment) => {
     commentTextDiv.setAttribute('class', 'row');
     commentCtrlsDiv.setAttribute('class', 'row');
 
-    userSpan.setAttribute('class', 'user col-auto');
+    userSpan.setAttribute('class', 'user');
     spacerSpan.setAttribute('class', 'col-auto');
-    timestampSpan.setAttribute('class', 'text-muted col-auto');
+    timestampSpan.setAttribute('class', 'timestamp');
     commentText.setAttribute('class', 'comment-text');
     upvoteBtn.setAttribute('class', 'upvote-btn');
 
