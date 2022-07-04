@@ -74,8 +74,6 @@ createCommentComponent = (comment) => {
     // Onclick events.
     upvoteCtrl.onclick = () => {
         // Make PUT request.
-        // comment.upvotes += 1;
-
         const xmlReq = new XMLHttpRequest();
         xmlReq.open('PUT', `${url}/upvote/${comment.id}`, false);
         xmlReq.setRequestHeader('Content-type', 'application/json')
@@ -88,7 +86,17 @@ createCommentComponent = (comment) => {
             replyDiv.setAttribute('hidden', '');
     };
     replyCommentBtn.onclick = () => {
+        // PUT request.
+        const xmlReq = new XMLHttpRequest();
+        xmlReq.open('PUT', `${url}/addreply/${comment.id}`)
+        xmlReq.setRequestHeader('Accept', 'application/json');
+        xmlReq.setRequestHeader('Content-Type', 'application/json');
+        xmlReq.send(JSON.stringify(
+            { 'reply-input': replyTextArea.value }
+        ));
+
         replyDiv.setAttribute('hidden', '');
+        window.location.reload();
     }
 
     // Set comment data.
