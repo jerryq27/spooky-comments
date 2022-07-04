@@ -107,6 +107,7 @@ app.get('/backend/comments', (req, res) => {
 app.post('/backend/addcomment', (req, res) => {
     // Deep copy the template.
     let newComment = {...commentTemplate};
+    newComment.id = `${comments.length + 1}`;
     newComment.comment = req.body['comment-text'];
     comments.push(newComment);
 
@@ -123,7 +124,7 @@ app.put('/backend/update/:id', (req, res) => {
         comment.upvotes += 1;
         res.statusCode = 200;
     }
-    console.log(JSON.stringify(comment));
+    // console.log(JSON.stringify(comment));
     res.send(JSON.stringify(comment));
 });
 
