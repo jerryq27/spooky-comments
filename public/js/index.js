@@ -82,8 +82,7 @@ createCommentComponent = (comment) => {
     const userSpan = document.createElement('span');
     const timestampSpan = document.createElement('span');
     const commentText = document.createElement('p');
-    const reactContainerDiv = document.createElement('div');
-    const upvoteBtn = document.createElement('button');
+    const reactUpvoteBtnDiv = document.createElement('div');
     const replyBtn = document.createElement('button');
     const replySectionDiv = document.createElement('div');
     const replyTextArea = document.createElement('textarea');
@@ -102,10 +101,9 @@ createCommentComponent = (comment) => {
     spacerSpan.setAttribute('class', 'col-auto');
     timestampSpan.setAttribute('class', 'timestamp');
     commentText.setAttribute('class', 'comment-text');
-    upvoteBtn.setAttribute('class', 'upvote-btn');
-    reactContainerDiv.setAttribute('class', 'react-container col-auto');
-    reactContainerDiv.setAttribute('data-commentid', comment.id);
-    reactContainerDiv.setAttribute('data-upvotes', comment.upvotes);
+    reactUpvoteBtnDiv.setAttribute('class', 'react-container col-auto');
+    reactUpvoteBtnDiv.setAttribute('data-commentid', comment.id);
+    reactUpvoteBtnDiv.setAttribute('data-upvotes', comment.upvotes);
 
     replyTextArea.setAttribute('class', 'form-control');
     replyTextArea.setAttribute('rows', '3');
@@ -119,14 +117,6 @@ createCommentComponent = (comment) => {
     replySectionDiv.setAttribute('hidden', '')
 
     // Onclick events.
-    upvoteBtn.onclick = () => {
-        // Make PUT request.
-        const xmlReq = new XMLHttpRequest();
-        xmlReq.open('PUT', `${url}/upvote/${comment.id}`, false);
-        xmlReq.setRequestHeader('Content-type', 'application/json')
-        xmlReq.send(null);
-        window.location.reload();
-    };
     replyBtn.onclick = () => {
         if(replySectionDiv.hasAttribute('hidden')) {
             replySectionDiv.removeAttribute('hidden');
@@ -156,8 +146,6 @@ createCommentComponent = (comment) => {
     spacerSpan.innerHTML = '•';
     timestampSpan.innerText = comment.timestamp;
     commentText.innerText = comment.comment;
-    upvoteBtn.innerText = comment.upvotes > 0? `▲ Upvote (${comment.upvotes})` : '▲ Upvote';
-    // reactContainerDiv.innerHTML = '<button>React Button</button>';
     replyBtn.innerText = 'Reply';
     replyCommentBtn.innerText = 'Reply';
 
@@ -168,9 +156,8 @@ createCommentComponent = (comment) => {
 
     commentTextDiv.appendChild(commentText);
 
-    commentCtrlsDiv.appendChild(upvoteBtn);
+    commentCtrlsDiv.appendChild(reactUpvoteBtnDiv);
     commentCtrlsDiv.appendChild(replyBtn);
-    commentCtrlsDiv.appendChild(reactContainerDiv);
     commentCtrlsDiv.appendChild(replySectionDiv);
 
     commentInfoDiv.appendChild(userTimestampDiv);
