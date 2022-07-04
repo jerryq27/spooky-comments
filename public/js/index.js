@@ -81,9 +81,13 @@ createCommentComponent = (comment) => {
         window.location.reload();
     };
     replyCtrl.onclick = () => {
-        replyDiv.hasAttribute('hidden')? 
-            replyDiv.removeAttribute('hidden') :
+        if(replyDiv.hasAttribute('hidden')) {
+            replyDiv.removeAttribute('hidden');
+            replyTextArea.focus();
+        }
+        else {
             replyDiv.setAttribute('hidden', '');
+        }   
     };
     replyCommentBtn.onclick = () => {
         // PUT request.
