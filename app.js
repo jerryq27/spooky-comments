@@ -9,6 +9,8 @@ const app = express();
 app.use(express.static('public'));
 // Express middleware for parsing the body of POST requests.
 app.use(bodyParser.urlencoded({ extended: true }));
+// Express middlewaer for parsing body with JSON.
+app.use(bodyParser.json());
 
 let comments = [
     {
@@ -112,6 +114,23 @@ app.post('/backend/addcomment', (req, res) => {
     comments.push(newComment);
 
     res.redirect('/');
+});
+
+app.put('/backend/addreply/:id', (req, res) => {
+    const id = req.params.id;
+    const parentComment = findComment(id, id.split('-'), comments, 0, 1);
+
+    // console.log(req.body);
+
+    if(parentComment) {
+        const reply = {...commentTemplate};
+        reply.id = parentComment.id + `-${parentComment.children.length + 1}`
+        reply.comment = req.body['reply-input'];
+        parentComment.children.push(reply);
+
+        res.statusCode = 200;
+    }
+    res.send(JSON.stringify(parentComment));
 });
 
 app.put('/backend/upvote/:id', (req, res) => {
