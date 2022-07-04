@@ -2,7 +2,9 @@ $primary: #7E34f6;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
-
+h2 {
+    font-weight: bolder;
+}
 .debug {
     border: solid 1px red;
 }
@@ -21,7 +23,14 @@ $primary: #7E34f6;
         @extend .rounded-circle;
     }
 }
+
+.user {
+    @extend .fw-semibold;
+}
+
 .comment {
+    @extend .p-2;
+
     &-column {
         @extend .col-md-9;
         @extend .d-flex;
@@ -43,11 +52,14 @@ $primary: #7E34f6;
     }
 }
 
-.link-btn {
+$btn-text-color: #525e81;
+.upvote-btn, .reply-btn {
     @extend .btn;
     @extend .btn-link;
     text-decoration: none;
-    color: black;
+    padding-left: 0;
+    color: $btn-text-color;
+    --bs-btn-hover-color: darkgray;
 }
 
 .link-btn:hover {

@@ -47,9 +47,9 @@ createCommentComponent = (comment) => {
     const userSpan = document.createElement('span');
     const timestampSpan = document.createElement('span');
     const commentText = document.createElement('p');
-    const upvoteCtrl = document.createElement('button');
-    const replyCtrl = document.createElement('button');
-    const replyDiv = document.createElement('div');
+    const upvoteBtn = document.createElement('button');
+    const replyBtn = document.createElement('button');
+    const replySectionDiv = document.createElement('div');
     const replyTextArea = document.createElement('textarea');
     const replyCommentBtn = document.createElement('button');
     const spacerSpan = document.createElement('span');
@@ -58,21 +58,21 @@ createCommentComponent = (comment) => {
     userSpan.setAttribute('class', 'user');
     timestampSpan.setAttribute('class', 'text-muted');
     commentText.setAttribute('class', 'comment-text');
-    upvoteCtrl.setAttribute('class', 'link-btn');
+    upvoteBtn.setAttribute('class', 'upvote-btn');
 
     replyTextArea.setAttribute('class', 'form-control');
     replyTextArea.setAttribute('rows', '3');
     replyCommentBtn.setAttribute('class', 'btn btn-primary');
 
-    replyDiv.appendChild(replyTextArea);
-    replyDiv.appendChild(document.createElement('br'));
-    replyDiv.appendChild(replyCommentBtn);
+    replySectionDiv.appendChild(replyTextArea);
+    replySectionDiv.appendChild(document.createElement('br'));
+    replySectionDiv.appendChild(replyCommentBtn);
 
-    replyCtrl.setAttribute('class', 'link-btn');
-    replyDiv.setAttribute('hidden', '')
+    replyBtn.setAttribute('class', 'reply-btn');
+    replySectionDiv.setAttribute('hidden', '')
 
     // Onclick events.
-    upvoteCtrl.onclick = () => {
+    upvoteBtn.onclick = () => {
         // Make PUT request.
         const xmlReq = new XMLHttpRequest();
         xmlReq.open('PUT', `${url}/upvote/${comment.id}`, false);
@@ -80,16 +80,16 @@ createCommentComponent = (comment) => {
         xmlReq.send(null);
         window.location.reload();
     };
-    replyCtrl.onclick = () => {
-        if(replyDiv.hasAttribute('hidden')) {
-            replyDiv.removeAttribute('hidden');
+    replyBtn.onclick = () => {
+        if(replySectionDiv.hasAttribute('hidden')) {
+            replySectionDiv.removeAttribute('hidden');
             replyTextArea.focus();
         }
         else {
-            replyDiv.setAttribute('hidden', '');
+            replySectionDiv.setAttribute('hidden', '');
         }   
     };
-    replyCommentBtn.onclick = () => {
+    replyCommentBtn.onclick = () => {        
         // PUT request.
         const xmlReq = new XMLHttpRequest();
         xmlReq.open('PUT', `${url}/addreply/${comment.id}`)
@@ -99,17 +99,17 @@ createCommentComponent = (comment) => {
             { 'reply-input': replyTextArea.value }
         ));
 
-        replyDiv.setAttribute('hidden', '');
+        replySectionDiv.setAttribute('hidden', '');
         window.location.reload();
-    }
+    };
 
     // Set comment data.
     userSpan.innerText = comment.user;
-    spacerSpan.innerText = ' • ';
+    spacerSpan.innerHTML = '&nbsp;&nbsp;•&nbsp;&nbsp;';
     timestampSpan.innerText = comment.timestamp;
     commentText.innerText = comment.comment;
-    upvoteCtrl.innerText = comment.upvotes > 0? `▲ Upvote (${comment.upvotes})` : '▲ Upvote';
-    replyCtrl.innerText = 'Reply';
+    upvoteBtn.innerText = comment.upvotes > 0? `▲ Upvote (${comment.upvotes})` : '▲ Upvote';
+    replyBtn.innerText = 'Reply';
     replyCommentBtn.innerText = 'Reply';
 
     // Construct the component.
@@ -117,9 +117,16 @@ createCommentComponent = (comment) => {
     container.appendChild(spacerSpan);
     container.appendChild(timestampSpan);
     container.appendChild(commentText);
-    container.appendChild(upvoteCtrl);
-    container.appendChild(replyCtrl);
-    container.appendChild(replyDiv);
+    container.appendChild(upvoteBtn);
+    container.appendChild(replyBtn);
+    container.appendChild(replySectionDiv);
+
+    // Insert CSS pseudo-class for bullet images.
+    const listImgRule = `#${container.getAttribute('id')} {
+        background: url("/${comment.avatar}") no-repeat;
+        background-size: 35px 35px;
+    }`;
+    document.styleSheets[0].insertRule(listImgRule, 0);
 
     return container;
 }

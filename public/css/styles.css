@@ -1809,7 +1809,7 @@ textarea.form-control-lg {
   position: absolute;
   clip: rect(0, 0, 0, 0);
   pointer-events: none; }
-  .btn-check[disabled] + .btn, .btn-check[disabled] + .comment-btn, .btn-check[disabled] + .link-btn, .btn-check:disabled + .btn, .btn-check:disabled + .comment-btn, .btn-check:disabled + .link-btn {
+  .btn-check[disabled] + .btn, .btn-check[disabled] + .comment-btn, .btn-check[disabled] + .upvote-btn, .btn-check[disabled] + .reply-btn, .btn-check:disabled + .btn, .btn-check:disabled + .comment-btn, .btn-check:disabled + .upvote-btn, .btn-check:disabled + .reply-btn {
     pointer-events: none;
     filter: none;
     opacity: 0.65; }
@@ -1944,10 +1944,10 @@ textarea.form-control-lg {
   .input-group > .form-control:focus, .input-group > .comment-input:focus,
   .input-group > .form-select:focus {
     z-index: 3; }
-  .input-group .btn, .input-group .comment-btn, .input-group .link-btn {
+  .input-group .btn, .input-group .comment-btn, .input-group .upvote-btn, .input-group .reply-btn {
     position: relative;
     z-index: 2; }
-    .input-group .btn:focus, .input-group .comment-btn:focus, .input-group .link-btn:focus {
+    .input-group .btn:focus, .input-group .comment-btn:focus, .input-group .upvote-btn:focus, .input-group .reply-btn:focus {
       z-index: 3; }
 
 .input-group-text {
@@ -1969,7 +1969,8 @@ textarea.form-control-lg {
 .input-group-lg > .input-group-text,
 .input-group-lg > .btn,
 .input-group-lg > .comment-btn,
-.input-group-lg > .link-btn {
+.input-group-lg > .upvote-btn,
+.input-group-lg > .reply-btn {
   padding: 0.5rem 1rem;
   font-size: 1.25rem;
   border-radius: 0.5rem; }
@@ -1979,7 +1980,8 @@ textarea.form-control-lg {
 .input-group-sm > .input-group-text,
 .input-group-sm > .btn,
 .input-group-sm > .comment-btn,
-.input-group-sm > .link-btn {
+.input-group-sm > .upvote-btn,
+.input-group-sm > .reply-btn {
   padding: 0.25rem 0.5rem;
   font-size: 0.875rem;
   border-radius: 0.25rem; }
@@ -2155,7 +2157,7 @@ textarea.form-control-lg {
   .input-group .form-select.is-invalid:focus {
     z-index: 3; }
 
-.btn, .comment-btn, .link-btn {
+.btn, .comment-btn, .upvote-btn, .reply-btn {
   --bs-btn-padding-x: 0.75rem;
   --bs-btn-padding-y: 0.375rem;
   --bs-btn-font-family: ;
@@ -2187,34 +2189,37 @@ textarea.form-control-lg {
   background-color: var(--bs-btn-bg);
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out; }
   @media (prefers-reduced-motion: reduce) {
-    .btn, .comment-btn, .link-btn {
+    .btn, .comment-btn, .upvote-btn, .reply-btn {
       transition: none; } }
-  .btn:hover, .comment-btn:hover, .link-btn:hover {
+  .btn:hover, .comment-btn:hover, .upvote-btn:hover, .reply-btn:hover {
     color: var(--bs-btn-hover-color);
     background-color: var(--bs-btn-hover-bg);
     border-color: var(--bs-btn-hover-border-color); }
-  .btn-check:focus + .btn, .btn-check:focus + .comment-btn, .btn-check:focus + .link-btn, .btn:focus, .comment-btn:focus, .link-btn:focus {
+  .btn-check:focus + .btn, .btn-check:focus + .comment-btn, .btn-check:focus + .upvote-btn, .btn-check:focus + .reply-btn, .btn:focus, .comment-btn:focus, .upvote-btn:focus, .reply-btn:focus {
     color: var(--bs-btn-hover-color);
     background-color: var(--bs-btn-hover-bg);
     border-color: var(--bs-btn-hover-border-color);
     outline: 0;
     box-shadow: var(--bs-btn-focus-box-shadow); }
-  .btn-check:checked + .btn, .btn-check:checked + .comment-btn, .btn-check:checked + .link-btn,
+  .btn-check:checked + .btn, .btn-check:checked + .comment-btn, .btn-check:checked + .upvote-btn, .btn-check:checked + .reply-btn,
   .btn-check:active + .btn,
   .btn-check:active + .comment-btn,
-  .btn-check:active + .link-btn, .btn:active, .comment-btn:active, .link-btn:active, .btn.active, .active.comment-btn, .active.link-btn, .btn.show, .show.comment-btn, .show.link-btn {
+  .btn-check:active + .upvote-btn,
+  .btn-check:active + .reply-btn, .btn:active, .comment-btn:active, .upvote-btn:active, .reply-btn:active, .btn.active, .active.comment-btn, .active.upvote-btn, .active.reply-btn, .btn.show, .show.comment-btn, .show.upvote-btn, .show.reply-btn {
     color: var(--bs-btn-active-color);
     background-color: var(--bs-btn-active-bg);
     border-color: var(--bs-btn-active-border-color); }
-    .btn-check:checked + .btn:focus, .btn-check:checked + .comment-btn:focus, .btn-check:checked + .link-btn:focus,
+    .btn-check:checked + .btn:focus, .btn-check:checked + .comment-btn:focus, .btn-check:checked + .upvote-btn:focus, .btn-check:checked + .reply-btn:focus,
     .btn-check:active + .btn:focus,
     .btn-check:active + .comment-btn:focus,
-    .btn-check:active + .link-btn:focus, .btn:active:focus, .comment-btn:active:focus, .link-btn:active:focus, .btn.active:focus, .active.comment-btn:focus, .active.link-btn:focus, .btn.show:focus, .show.comment-btn:focus, .show.link-btn:focus {
+    .btn-check:active + .upvote-btn:focus,
+    .btn-check:active + .reply-btn:focus, .btn:active:focus, .comment-btn:active:focus, .upvote-btn:active:focus, .reply-btn:active:focus, .btn.active:focus, .active.comment-btn:focus, .active.upvote-btn:focus, .active.reply-btn:focus, .btn.show:focus, .show.comment-btn:focus, .show.upvote-btn:focus, .show.reply-btn:focus {
       box-shadow: var(--bs-btn-focus-box-shadow); }
-  .btn:disabled, .comment-btn:disabled, .link-btn:disabled, .btn.disabled, .disabled.comment-btn, .disabled.link-btn,
+  .btn:disabled, .comment-btn:disabled, .upvote-btn:disabled, .reply-btn:disabled, .btn.disabled, .disabled.comment-btn, .disabled.upvote-btn, .disabled.reply-btn,
   fieldset:disabled .btn,
   fieldset:disabled .comment-btn,
-  fieldset:disabled .link-btn {
+  fieldset:disabled .upvote-btn,
+  fieldset:disabled .reply-btn {
     color: var(--bs-btn-disabled-color);
     pointer-events: none;
     background-color: var(--bs-btn-disabled-bg);
@@ -2469,7 +2474,7 @@ textarea.form-control-lg {
   --bs-btn-disabled-bg: transparent;
   --bs-gradient: none; }
 
-.btn-link, .link-btn {
+.btn-link, .upvote-btn, .reply-btn {
   --bs-btn-font-weight: 400;
   --bs-btn-color: var(--bs-link-color);
   --bs-btn-bg: transparent;
@@ -2482,13 +2487,13 @@ textarea.form-control-lg {
   --bs-btn-box-shadow: none;
   text-decoration: underline; }
 
-.btn-lg, .btn-group-lg > .btn, .btn-group-lg > .comment-btn, .btn-group-lg > .link-btn {
+.btn-lg, .btn-group-lg > .btn, .btn-group-lg > .comment-btn, .btn-group-lg > .upvote-btn, .btn-group-lg > .reply-btn {
   --bs-btn-padding-y: 0.5rem;
   --bs-btn-padding-x: 1rem;
   --bs-btn-font-size: 1.25rem;
   --bs-btn-border-radius: 0.5rem; }
 
-.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .comment-btn, .btn-group-sm > .link-btn {
+.btn-sm, .btn-group-sm > .btn, .btn-group-sm > .comment-btn, .btn-group-sm > .upvote-btn, .btn-group-sm > .reply-btn {
   --bs-btn-padding-y: 0.25rem;
   --bs-btn-padding-x: 0.5rem;
   --bs-btn-font-size: 0.875rem;
@@ -2798,46 +2803,58 @@ textarea.form-control-lg {
   position: relative;
   display: inline-flex;
   vertical-align: middle; }
-  .btn-group > .btn, .btn-group > .comment-btn, .btn-group > .link-btn,
+  .btn-group > .btn, .btn-group > .comment-btn, .btn-group > .upvote-btn, .btn-group > .reply-btn,
   .btn-group-vertical > .btn,
   .btn-group-vertical > .comment-btn,
-  .btn-group-vertical > .link-btn {
+  .btn-group-vertical > .upvote-btn,
+  .btn-group-vertical > .reply-btn {
     position: relative;
     flex: 1 1 auto; }
-  .btn-group > .btn-check:checked + .btn, .btn-group > .btn-check:checked + .comment-btn, .btn-group > .btn-check:checked + .link-btn,
+  .btn-group > .btn-check:checked + .btn, .btn-group > .btn-check:checked + .comment-btn, .btn-group > .btn-check:checked + .upvote-btn, .btn-group > .btn-check:checked + .reply-btn,
   .btn-group > .btn-check:focus + .btn,
   .btn-group > .btn-check:focus + .comment-btn,
-  .btn-group > .btn-check:focus + .link-btn,
+  .btn-group > .btn-check:focus + .upvote-btn,
+  .btn-group > .btn-check:focus + .reply-btn,
   .btn-group > .btn:hover,
   .btn-group > .comment-btn:hover,
-  .btn-group > .link-btn:hover,
+  .btn-group > .upvote-btn:hover,
+  .btn-group > .reply-btn:hover,
   .btn-group > .btn:focus,
   .btn-group > .comment-btn:focus,
-  .btn-group > .link-btn:focus,
+  .btn-group > .upvote-btn:focus,
+  .btn-group > .reply-btn:focus,
   .btn-group > .btn:active,
   .btn-group > .comment-btn:active,
-  .btn-group > .link-btn:active,
+  .btn-group > .upvote-btn:active,
+  .btn-group > .reply-btn:active,
   .btn-group > .btn.active,
   .btn-group > .active.comment-btn,
-  .btn-group > .active.link-btn,
+  .btn-group > .active.upvote-btn,
+  .btn-group > .active.reply-btn,
   .btn-group-vertical > .btn-check:checked + .btn,
   .btn-group-vertical > .btn-check:checked + .comment-btn,
-  .btn-group-vertical > .btn-check:checked + .link-btn,
+  .btn-group-vertical > .btn-check:checked + .upvote-btn,
+  .btn-group-vertical > .btn-check:checked + .reply-btn,
   .btn-group-vertical > .btn-check:focus + .btn,
   .btn-group-vertical > .btn-check:focus + .comment-btn,
-  .btn-group-vertical > .btn-check:focus + .link-btn,
+  .btn-group-vertical > .btn-check:focus + .upvote-btn,
+  .btn-group-vertical > .btn-check:focus + .reply-btn,
   .btn-group-vertical > .btn:hover,
   .btn-group-vertical > .comment-btn:hover,
-  .btn-group-vertical > .link-btn:hover,
+  .btn-group-vertical > .upvote-btn:hover,
+  .btn-group-vertical > .reply-btn:hover,
   .btn-group-vertical > .btn:focus,
   .btn-group-vertical > .comment-btn:focus,
-  .btn-group-vertical > .link-btn:focus,
+  .btn-group-vertical > .upvote-btn:focus,
+  .btn-group-vertical > .reply-btn:focus,
   .btn-group-vertical > .btn:active,
   .btn-group-vertical > .comment-btn:active,
-  .btn-group-vertical > .link-btn:active,
+  .btn-group-vertical > .upvote-btn:active,
+  .btn-group-vertical > .reply-btn:active,
   .btn-group-vertical > .btn.active,
   .btn-group-vertical > .active.comment-btn,
-  .btn-group-vertical > .active.link-btn {
+  .btn-group-vertical > .active.upvote-btn,
+  .btn-group-vertical > .active.reply-btn {
     z-index: 1; }
 
 .btn-toolbar {
@@ -2849,25 +2866,29 @@ textarea.form-control-lg {
 
 .btn-group {
   border-radius: 0.375rem; }
-  .btn-group > .btn:not(:first-child), .btn-group > .comment-btn:not(:first-child), .btn-group > .link-btn:not(:first-child),
+  .btn-group > .btn:not(:first-child), .btn-group > .comment-btn:not(:first-child), .btn-group > .upvote-btn:not(:first-child), .btn-group > .reply-btn:not(:first-child),
   .btn-group > .btn-group:not(:first-child) {
     margin-left: -1px; }
-  .btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .comment-btn:not(:last-child):not(.dropdown-toggle), .btn-group > .link-btn:not(:last-child):not(.dropdown-toggle),
+  .btn-group > .btn:not(:last-child):not(.dropdown-toggle), .btn-group > .comment-btn:not(:last-child):not(.dropdown-toggle), .btn-group > .upvote-btn:not(:last-child):not(.dropdown-toggle), .btn-group > .reply-btn:not(:last-child):not(.dropdown-toggle),
   .btn-group > .btn.dropdown-toggle-split:first-child,
   .btn-group > .dropdown-toggle-split.comment-btn:first-child,
-  .btn-group > .dropdown-toggle-split.link-btn:first-child,
+  .btn-group > .dropdown-toggle-split.upvote-btn:first-child,
+  .btn-group > .dropdown-toggle-split.reply-btn:first-child,
   .btn-group > .btn-group:not(:last-child) > .btn,
   .btn-group > .btn-group:not(:last-child) > .comment-btn,
-  .btn-group > .btn-group:not(:last-child) > .link-btn {
+  .btn-group > .btn-group:not(:last-child) > .upvote-btn,
+  .btn-group > .btn-group:not(:last-child) > .reply-btn {
     border-top-right-radius: 0;
     border-bottom-right-radius: 0; }
-  .btn-group > .btn:nth-child(n + 3), .btn-group > .comment-btn:nth-child(n + 3), .btn-group > .link-btn:nth-child(n + 3),
+  .btn-group > .btn:nth-child(n + 3), .btn-group > .comment-btn:nth-child(n + 3), .btn-group > .upvote-btn:nth-child(n + 3), .btn-group > .reply-btn:nth-child(n + 3),
   .btn-group > :not(.btn-check) + .btn,
   .btn-group > :not(.btn-check) + .comment-btn,
-  .btn-group > :not(.btn-check) + .link-btn,
+  .btn-group > :not(.btn-check) + .upvote-btn,
+  .btn-group > :not(.btn-check) + .reply-btn,
   .btn-group > .btn-group:not(:first-child) > .btn,
   .btn-group > .btn-group:not(:first-child) > .comment-btn,
-  .btn-group > .btn-group:not(:first-child) > .link-btn {
+  .btn-group > .btn-group:not(:first-child) > .upvote-btn,
+  .btn-group > .btn-group:not(:first-child) > .reply-btn {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0; }
 
@@ -2881,11 +2902,11 @@ textarea.form-control-lg {
   .dropstart .dropdown-toggle-split::before {
     margin-right: 0; }
 
-.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .btn-group-sm > .comment-btn + .dropdown-toggle-split, .btn-group-sm > .link-btn + .dropdown-toggle-split {
+.btn-sm + .dropdown-toggle-split, .btn-group-sm > .btn + .dropdown-toggle-split, .btn-group-sm > .comment-btn + .dropdown-toggle-split, .btn-group-sm > .upvote-btn + .dropdown-toggle-split, .btn-group-sm > .reply-btn + .dropdown-toggle-split {
   padding-right: 0.375rem;
   padding-left: 0.375rem; }
 
-.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .btn-group-lg > .comment-btn + .dropdown-toggle-split, .btn-group-lg > .link-btn + .dropdown-toggle-split {
+.btn-lg + .dropdown-toggle-split, .btn-group-lg > .btn + .dropdown-toggle-split, .btn-group-lg > .comment-btn + .dropdown-toggle-split, .btn-group-lg > .upvote-btn + .dropdown-toggle-split, .btn-group-lg > .reply-btn + .dropdown-toggle-split {
   padding-right: 0.75rem;
   padding-left: 0.75rem; }
 
@@ -2896,22 +2917,25 @@ textarea.form-control-lg {
   
   .btn-group-vertical > .btn,
   .btn-group-vertical > .comment-btn,
-  .btn-group-vertical > .link-btn,
+  .btn-group-vertical > .upvote-btn,
+  .btn-group-vertical > .reply-btn,
   .btn-group-vertical > .btn-group {
     width: 100%; }
-  .btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .comment-btn:not(:first-child), .btn-group-vertical > .link-btn:not(:first-child),
+  .btn-group-vertical > .btn:not(:first-child), .btn-group-vertical > .comment-btn:not(:first-child), .btn-group-vertical > .upvote-btn:not(:first-child), .btn-group-vertical > .reply-btn:not(:first-child),
   .btn-group-vertical > .btn-group:not(:first-child) {
     margin-top: -1px; }
-  .btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .comment-btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .link-btn:not(:last-child):not(.dropdown-toggle),
+  .btn-group-vertical > .btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .comment-btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .upvote-btn:not(:last-child):not(.dropdown-toggle), .btn-group-vertical > .reply-btn:not(:last-child):not(.dropdown-toggle),
   .btn-group-vertical > .btn-group:not(:last-child) > .btn,
   .btn-group-vertical > .btn-group:not(:last-child) > .comment-btn,
-  .btn-group-vertical > .btn-group:not(:last-child) > .link-btn {
+  .btn-group-vertical > .btn-group:not(:last-child) > .upvote-btn,
+  .btn-group-vertical > .btn-group:not(:last-child) > .reply-btn {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0; }
-  .btn-group-vertical > .btn ~ .btn, .btn-group-vertical > .comment-btn ~ .btn, .btn-group-vertical > .link-btn ~ .btn, .btn-group-vertical > .btn ~ .comment-btn, .btn-group-vertical > .comment-btn ~ .comment-btn, .btn-group-vertical > .link-btn ~ .comment-btn, .btn-group-vertical > .btn ~ .link-btn, .btn-group-vertical > .comment-btn ~ .link-btn, .btn-group-vertical > .link-btn ~ .link-btn,
+  .btn-group-vertical > .btn ~ .btn, .btn-group-vertical > .comment-btn ~ .btn, .btn-group-vertical > .upvote-btn ~ .btn, .btn-group-vertical > .reply-btn ~ .btn, .btn-group-vertical > .btn ~ .comment-btn, .btn-group-vertical > .comment-btn ~ .comment-btn, .btn-group-vertical > .upvote-btn ~ .comment-btn, .btn-group-vertical > .reply-btn ~ .comment-btn, .btn-group-vertical > .btn ~ .upvote-btn, .btn-group-vertical > .comment-btn ~ .upvote-btn, .btn-group-vertical > .upvote-btn ~ .upvote-btn, .btn-group-vertical > .reply-btn ~ .upvote-btn, .btn-group-vertical > .btn ~ .reply-btn, .btn-group-vertical > .comment-btn ~ .reply-btn, .btn-group-vertical > .upvote-btn ~ .reply-btn, .btn-group-vertical > .reply-btn ~ .reply-btn,
   .btn-group-vertical > .btn-group:not(:first-child) > .btn,
   .btn-group-vertical > .btn-group:not(:first-child) > .comment-btn,
-  .btn-group-vertical > .btn-group:not(:first-child) > .link-btn {
+  .btn-group-vertical > .btn-group:not(:first-child) > .upvote-btn,
+  .btn-group-vertical > .btn-group:not(:first-child) > .reply-btn {
     border-top-left-radius: 0;
     border-top-right-radius: 0; }
 
@@ -3751,7 +3775,7 @@ textarea.form-control-lg {
   .badge:empty {
     display: none; }
 
-.btn .badge, .comment-btn .badge, .link-btn .badge {
+.btn .badge, .comment-btn .badge, .upvote-btn .badge, .reply-btn .badge {
   position: relative;
   top: -1px; }
 
@@ -5365,7 +5389,7 @@ textarea.form-control-lg {
   cursor: wait;
   background-color: currentcolor;
   opacity: 0.5; }
-  .placeholder.btn::before, .placeholder.comment-btn::before, .placeholder.link-btn::before {
+  .placeholder.btn::before, .placeholder.comment-btn::before, .placeholder.upvote-btn::before, .placeholder.reply-btn::before {
     display: inline-block;
     content: ""; }
 
@@ -6213,7 +6237,7 @@ textarea.form-control-lg {
 .p-1 {
   padding: 0.25rem !important; }
 
-.p-2 {
+.p-2, .comment {
   padding: 0.5rem !important; }
 
 .p-3 {
@@ -6402,7 +6426,7 @@ textarea.form-control-lg {
 .fw-bold {
   font-weight: 700 !important; }
 
-.fw-semibold {
+.fw-semibold, .user {
   font-weight: 600 !important; }
 
 .fw-bolder {
@@ -8393,6 +8417,9 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important; } }
 
+h2, .h2 {
+  font-weight: bolder; }
+
 .debug {
   border: solid 1px red; }
 
@@ -8400,9 +8427,11 @@ textarea.form-control-lg {
   max-width: 35px;
   max-height: 35px; }
 
-.link-btn {
+.upvote-btn, .reply-btn {
   text-decoration: none;
-  color: black; }
+  padding-left: 0;
+  color: #525e81;
+  --bs-btn-hover-color: darkgray; }
 
 .link-btn:hover {
   color: darkgray; }
