@@ -38,6 +38,12 @@ const setValuesFor = {
 // Get the comments and render list.
 document.onreadystatechange = () => {
     if(document.readyState === 'complete') {
+        if(localStorage.getItem('user') === null) {
+            setDefaultUser('ghost');
+        }
+        else {
+            setDefaultUser(localStorage.getItem('user'));
+        }
         getComments();
         renderReactButtons();
     }
@@ -228,13 +234,21 @@ validateAndSubmit = () => {
     }
 }
 
-changeUser = (event) => {
-    const element = event.target;
-    setValuesFor[element.id]();
+setDefaultUser = (user) => {
+    setValuesFor[user]();
+    localStorage.setItem('user', user);
 
     const headerAvatarImg = document.querySelector('.header-avatar-img');
     headerAvatarImg.setAttribute('src', commentData.avatar);
-    console.log(commentData);
+}
+
+changeUser = (event) => {
+    const element = event.target;
+    setValuesFor[element.id]();
+    localStorage.setItem('user', element.id);
+
+    const headerAvatarImg = document.querySelector('.header-avatar-img');
+    headerAvatarImg.setAttribute('src', commentData.avatar);
 }
 
 const renderReactButtons = () => {

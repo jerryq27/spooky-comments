@@ -61,16 +61,6 @@ let comments = [
     }
 ];
 
-let commentTemplate = {
-    id: null,
-    user: 'Ghost Greg',
-    avatar: 'img/spooky/avatar-ghost.png',
-    timestamp: 'Just now',
-    comment: '',
-    upvotes: 0,
-    children: []
-};
-
 /**
  * Recursive function to find comments.
  * @param {string} searchId the id of the comment to search for.
@@ -114,12 +104,12 @@ app.post('/backend/addcomment', (req, res) => {
     res.redirect('/');
 });
 
-// UPDATE
 app.put('/backend/addreply/:id', (req, res) => {
     const id = req.params.id;
     const parentComment = findComment(id, id.split('-'), comments, 0, 1);
 
     if(parentComment) {
+        // Get reply data.
         const reply = req.body['reply'];
         reply.id = parentComment.id + `-${parentComment.children.length + 1}`
         parentComment.children.push(reply);
