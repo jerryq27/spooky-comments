@@ -3,6 +3,7 @@
 👻 Comment thread demo application for a haunted organization. 👻
 
 🌟 [Demo](https://spooky-comments-v2.herokuapp.com/) V2
+🎃 [Demo](https://spooky-comments-v3.herokuapp.com/) Vspooky
 
 ▶️ To run the application locally:
 
