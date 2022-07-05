@@ -1,6 +1,6 @@
 // Get DOM elements for the form, comment input, and comment list.
 
-const url = 'http://localhost:8000/backend';
+const url = 'https://spooky-comments-v2.herokuapp.com/backend';
 
 // Get the comments and render list.
 document.onreadystatechange = () => {
