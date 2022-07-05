@@ -120,6 +120,23 @@ img {
     }
 }
 
+.dropdown-menu {
+    &-btn {
+        @extend .btn;
+        @extend .btn-secondary;
+        @extend .dropdown-toggle;
+    }
+    &-item {
+        @extend .dropdown-item;
+        @extend .ps-1;
+        cursor: pointer;
+
+        & > img {
+            @extend .me-2;
+        }
+    }
+}
+
 .upvote-btn, .reply-btn {
     @extend .btn;
     @extend .btn-link;

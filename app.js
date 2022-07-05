@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 let comments = [
     {
         id: '1',
-        user: 'Greg Ghost',
+        user: 'Ghost Greg',
         avatar: 'img/spooky/avatar-ghost.png',
         timestamp: '45 min ago',
         comment: 'Jeepers creepers now that\'s a huge release with some big ' +
@@ -63,7 +63,7 @@ let comments = [
 
 let commentTemplate = {
     id: null,
-    user: 'Greg Ghost',
+    user: 'Ghost Greg',
     avatar: 'img/spooky/avatar-ghost.png',
     timestamp: 'Just now',
     comment: '',
