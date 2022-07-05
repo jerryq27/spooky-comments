@@ -168,7 +168,7 @@ createCommentComponent = (comment) => {
         xmlReq.setRequestHeader('Accept', 'application/json');
         xmlReq.setRequestHeader('Content-Type', 'application/json');
         xmlReq.send(JSON.stringify(
-            { 'reply-input': replyTextArea.value }
+            { reply: commentData }
         ));
 
         replySectionDiv.setAttribute('hidden', '');

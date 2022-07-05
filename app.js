@@ -120,9 +120,8 @@ app.put('/backend/addreply/:id', (req, res) => {
     const parentComment = findComment(id, id.split('-'), comments, 0, 1);
 
     if(parentComment) {
-        const reply = JSON.parse(JSON.stringify(commentTemplate));
+        const reply = req.body['reply'];
         reply.id = parentComment.id + `-${parentComment.children.length + 1}`
-        reply.comment = req.body['reply-input'];
         parentComment.children.push(reply);
 
         res.statusCode = 200;
