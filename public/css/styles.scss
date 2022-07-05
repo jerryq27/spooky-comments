@@ -1,8 +1,22 @@
-$primary: #7E34f6;
+$primary: #FF79C6;
+$btn-text-color: #9580FF;
+$background-color: #282A36;
+$img-border-color: #50fA7B;
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
 // Globals
+body {
+    background-color: $background-color;
+    color: $gray-300;
+}
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: right;
+    @extend .p-2;
+}
 h2 {
     font-weight: bolder;
 }
@@ -15,6 +29,7 @@ span {
 img {
     @extend .img-fluid;
     @extend .rounded-circle;
+    border: solid 1px $img-border-color;
     max-width: 35px;
     max-height: 35px;
 }
@@ -78,7 +93,7 @@ img {
 }
 
 .timestamp {
-    @extend .text-muted;
+    color: $gray-500;
     @extend .col-auto;
 }
 
@@ -93,7 +108,7 @@ img {
     &-with-child {
         @extend .comment;
         @extend .row;
-        background: linear-gradient(lightgray, lightgray);
+        background: linear-gradient($img-border-color, $img-border-color);
         background-position: 41px 21px;
         background-size: 1px 90%;
         background-repeat: no-repeat;
@@ -105,7 +120,6 @@ img {
     }
 }
 
-$btn-text-color: #525e81;
 .upvote-btn, .reply-btn {
     @extend .btn;
     @extend .btn-link;
@@ -113,9 +127,9 @@ $btn-text-color: #525e81;
     text-decoration: none;
     padding-left: 0;
     color: $btn-text-color;
-    --bs-btn-hover-color: darkgray;
+    --bs-btn-hover-color: #AA99FF;
 }
 
 .link-btn:hover {
-    color: darkgray;
+    color: #AA99FF;
 }
