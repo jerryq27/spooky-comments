@@ -106,15 +106,15 @@ app.get('/backend/comments', (req, res) => {
 });
 
 app.post('/backend/addcomment', (req, res) => {
-    // Deep copy the template.
-    const newComment = JSON.parse(JSON.stringify(commentTemplate));
+    // Get the comment data.
+    const newComment = req.body['comment'];
     newComment.id = `${comments.length + 1}`;
-    newComment.comment = req.body['comment-input'];
     comments.push(newComment);
 
     res.redirect('/');
 });
 
+// UPDATE
 app.put('/backend/addreply/:id', (req, res) => {
     const id = req.params.id;
     const parentComment = findComment(id, id.split('-'), comments, 0, 1);

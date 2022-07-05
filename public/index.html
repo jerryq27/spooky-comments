@@ -10,13 +10,7 @@
 <body>
     <div class="container">
         <h2 class="row">Discussion</h2>
-        <form
-            class="header-form"
-            name="comment-form"
-            action="/backend/addcomment"
-            method="POST"
-            onsubmit="return validateComment();">
- 
+        <form class="header-form" name="comment-form">
             <div class="header-avatar-column">
                 <div class="dropdown">
                     <button
@@ -79,6 +73,7 @@
                     class="header-btn"
                     name="header-btn-ctrl"
                     type="submit"
+                    onclick="validateAndSubmit()"
                     value="Comment">
             </div>
             <br><br>

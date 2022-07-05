@@ -4,8 +4,8 @@ const url = 'http://localhost:8000/backend';
 
 let commentData = {
     id: null,
-    user: null,
-    avatar: null,
+    user: 'Ghost Greg',
+    avatar: 'img/spooky/avatar-ghost.png',
     timestamp: 'Just now',
     comment: null,
     upvotes: 0,
@@ -160,6 +160,8 @@ createCommentComponent = (comment) => {
         }   
     };
     replyCommentBtn.onclick = () => {        
+        commentData.comment = replyTextArea.value;
+
         // PUT request.
         const xmlReq = new XMLHttpRequest();
         xmlReq.open('PUT', `${url}/addreply/${comment.id}`)
@@ -203,11 +205,21 @@ createCommentComponent = (comment) => {
     return container;
 }
 
-validateComment = () => {
+validateAndSubmit = () => {
     const form = document.querySelector('form[name="comment-form"]');
     const commentText = form.elements['comment-input'].value;
 
     if(commentText) {
+        commentData.comment = commentText;
+        // Make POST.
+        const xmlReq = new XMLHttpRequest();
+        xmlReq.open('POST', `${url}/addcomment`)
+        xmlReq.setRequestHeader('Accept', 'application/json');
+        xmlReq.setRequestHeader('Content-Type', 'application/json');
+        xmlReq.send(JSON.stringify(
+            { comment: commentData }
+        ));
+
         return true;
     }
     else {
