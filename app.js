@@ -133,5 +133,5 @@ app.put('/backend/upvote/:id', (req, res) => {
 
 // Run Server
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}/`);
+    console.log(`Server running on https://spooky-comments-v3.herokuapp.com:${PORT}/`);
 });
