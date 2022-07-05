@@ -18,21 +18,21 @@ let comments = [
         user: 'Greg Ghost',
         avatar: 'img/spooky/avatar-ghost.png',
         timestamp: '45 min ago',
-        comment: 'Jeepers now that\'s a huge release with some big ' +
-            'community earnings to back it - it must be so rewarding ' +
-            'seeing creators quit their day jobs after monetizing ' +
-            '(with real MRR) on the new platform.',
+        comment: 'Jeepers creepers now that\'s a huge release with some big ' +
+            'community souls to back it - it must be so rewarding ' +
+            'seeing creatures quit their night jobs after monetizing ' +
+            '(with real MRR) on the new haunted platform.',
         upvotes: 0,
         children: [],
     },
     {
         id: '2',
-        user: 'Reaper Randy',
-        avatar: 'img/spooky/avatar-reaper.png',
+        user: 'Vampire Vlad',
+        avatar: 'img/spooky/avatar-dracula.png',
         timestamp: 'Yesterday',
-        comment: 'Switched our blog from Hubspot to Ghost a year ago -- ' +
-            'turned out to be a great decision. Looking forward to this ' +
-            'update....the in-platform analytics look expecially delicious. :)',
+        comment: 'Svitched our blog from Vampspot to Ghost a century ago -- ' +
+            'turned out to be a great decision. Looking forvard to this ' +
+            'update....the in-platform analytics look expecially delicious.. >:)',
         upvotes: 0,
         children: [
             {
@@ -40,9 +40,9 @@ let comments = [
                 user: 'Mummy',
                 avatar: 'img/spooky/avatar-mummy.png',
                 timestamp: '2 hrs ago',
-                comment: 'Thanks Sophie! Last year has been an absolut goldrush for ' +
-                    'the creator economy. Slowly at first, then all at once. Will be ' +
-                    'interesting to see how this ecosystem evolves over the next few years',
+                comment: 'Thanks Vlad! Last year has been an absolute goldrush for ' +
+                    'the creature economy. Slowly at first, then all at once. Will be ' +
+                    'interesting to see how this ecosystem.. unravels.. over the next century',
                 upvotes: 0,
                 children: [],
             },
@@ -50,11 +50,11 @@ let comments = [
     },
     {
         id: '3',
-        user: 'Vampire Vlad',
-        avatar: 'img/spooky/avatar-dracula.png',
+        user: 'Reaper Randy',
+        avatar: 'img/spooky/avatar-reaper.png',
         timestamp: '3 weeks ago',
-        comment: 'Love the native memberships and the zipless themes, I was ' +
-            'just asked by a friend about the options for a new site, and I ' +
+        comment: 'Love the native memberships and the spooky themes, I was ' +
+            'just asked by a living friend about the options for a new site, and I ' +
             'think I know what I\'ll be recommending then...',
         upvotes: 0,
         children: [],
