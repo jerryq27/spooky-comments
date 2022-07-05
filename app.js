@@ -28,7 +28,7 @@ let comments = [
     {
         id: '2',
         user: 'Vampire Vlad',
-        avatar: 'img/spooky/avatar-dracula.png',
+        avatar: 'img/spooky/avatar-vampire.png',
         timestamp: 'Yesterday',
         comment: 'Svitched our blog from Vampspot to Ghost a century ago -- ' +
             'turned out to be a great decision. Looking forvard to this ' +

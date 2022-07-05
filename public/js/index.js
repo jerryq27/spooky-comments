@@ -2,6 +2,39 @@
 
 const url = 'http://localhost:8000/backend';
 
+let commentData = {
+    id: null,
+    user: null,
+    avatar: null,
+    timestamp: 'Just now',
+    comment: null,
+    upvotes: 0,
+    children: []
+};
+
+const setValuesFor = {
+    ghost: () => {
+        commentData.user = 'Ghost Greg';
+        commentData.avatar = 'img/spooky/avatar-ghost.png'
+    },
+    mummy: () => {
+        commentData.user = 'Mummy';
+        commentData.avatar = 'img/spooky/avatar-mummy.png'
+    },
+    pumpkin: () => {
+        commentData.user = 'Pumpkin Penelope';
+        commentData.avatar = 'img/spooky/avatar-pumpkin.png'
+    },
+    reaper: () => {
+        commentData.user = 'Reaper Randy';
+        commentData.avatar = 'img/spooky/avatar-reaper.png'
+    },
+    vampire: () => {
+        commentData.user = 'Vampire Vlad';
+        commentData.avatar = 'img/spooky/avatar-vampire.png'
+    }
+};
+
 // Get the comments and render list.
 document.onreadystatechange = () => {
     if(document.readyState === 'complete') {
@@ -181,6 +214,15 @@ validateComment = () => {
         alert('Must submit a value.');
         return false;
     }
+}
+
+changeUser = (event) => {
+    const element = event.target;
+    setValuesFor[element.id]();
+
+    const headerAvatarImg = document.querySelector('.header-avatar-img');
+    headerAvatarImg.setAttribute('src', commentData.avatar);
+    console.log(commentData);
 }
 
 const renderReactButtons = () => {
